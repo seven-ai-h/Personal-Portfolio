@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiro Xiangyuan | Data Scientist</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <button class="sidebar-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <aside class="sidebar" id="sidebar" aria-hidden="true">
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <!-- About Section -->
+    <section id="about" class="reveal">
+      <div class="about-container">
+        <div class="about-image">
+          <img src="profile-placeholder.png" alt="Hiro Xiangyuan profile picture" loading="lazy">
+        </div>
+        <div class="about-content">
+          <div class="about-header">
+            <h1>Tuoyu (Hiro) Xiangyuan</h1>
+            <div class="about-contact">
+              <span>Email: <a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a></span><br>
+              <span>Phone: <a href="tel:+19495579201">(949) 557-9201</a></span><br>
+              <span>GitHub: <a href="https://github.com/seven-ai-h" target="_blank">github.com/seven-ai-h</a></span><br>
+              <span>LinkedIn: <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank">linkedin.com/in/hiro-xiangyuan</a></span>
+            </div>
+          </div>
+          <h2>About Me</h2>
+          <p>UC Berkeley Data Science student passionate about applying machine learning, natural language processing, and data visualization to solve real-world problems. Experienced in building multilingual translation systems (~85% accuracy on 100K sentences), spam email classifiers (92.3% accuracy, F1 = 0.90), and large-scale analytics on TV show datasets (15K+ records). Skilled at combining research in photonics with software development, leveraging tools like Python, SQL, Flask, and React to deliver insights and improve system efficiency.</p>
+          <div class="courses">
+            <h3>Relevant Coursework</h3>
+            <ul>
+              <li>Data Structures & Algorithms</li>
+              <li>Principles & Techniques of Data Science</li>
+              <li>Computational Structures in Data Science</li>
+              <li>Probability for Data Science</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="reveal">
+      <h2>Professional Experience</h2>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <h3>Photonics Devices Laboratory</h3>
+          <span class="exp-date">May. 2025 - Present</span>
+        </div>
+        <div class="exp-subheader">
+          <span>Undergraduate Research Assistant</span>
+          <span>Tainan, Taiwan</span>
+        </div>
+        <ul class="exp-details">
+          <li>Modified silicon photonics simulation data using MATLAB and Lumerical to extract coupling coefficients</li>
+          <li>Automated data pipelines and parameter sweeps, boosting modeling speed by 10% and cutting manual work</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <h3>Taiwanese American Student Association</h3>
+          <span class="exp-date">Jan. 2024 – Present</span>
+        </div>
+        <div class="exp-subheader">
+          <span>Webmaster Officer</span>
+          <span>Berkeley, CA</span>
+        </div>
+        <ul class="exp-details">
+          <li>Improved and maintained 10+ web pages, enhancing layout, design, and responsiveness using JavaScript, HTML/CSS</li>
+          <li>Conducted monthly site audits, fixing 10+ issues including broken links and image errors using Git</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <h3>Codify</h3>
+          <span class="exp-date">August. 2023 - May. 2024</span>
+        </div>
+        <div class="exp-subheader">
+          <span>Software Developer</span>
+          <span>Berkeley, CA</span>
+        </div>
+        <ul class="exp-details">
+          <li>Designed the profile page frontend using React, improving its visual appeal and user experience</li>
+          <li>Connected the frontend and backend using the provided API client to retrieve and display dynamic data on the page</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <h3>AI Kowa Trading Company</h3>
+          <span class="exp-date">Jun. 2021 – Aug. 2022</span>
+        </div>
+        <div class="exp-subheader">
+          <span>Data Analyst Intern</span>
+          <span>Montebello, CA</span>
+        </div>
+        <ul class="exp-details">
+          <li>Designed interactive Excel dashboards to analyze profit trends across retail stores and recommend supply adjustments, leading to a 4% increase in overall profit</li>
+          <li>Organized and analyzed 100+ customer purchase records using SQL to uncover shipping patterns and optimize logistics, improving delivery timing by 2%</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="reveal">
+      <h2>Technical Projects</h2>
+      <div class="project-list">
+        <article class="project-card">
+          <h3>GlobalNews Translation Project</h3>
+          <div class="project-tech">Python, JavaScript, Flask, NLP, Machine Learning</div>
+          <p>Built a full-stack translation app for Japanese, Chinese, and English using a seq2seq model achieving ~85% validation accuracy. Cleaned and filtered 100,000+ bilingual sentence pairs with pandas and numpy; deployed RESTful APIs for translation.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>SPAM/HAM Email Classification</h3>
+          <div class="project-tech">Python, NLP, Scikit-learn</div>
+          <p>Built a binary classification model for spam detection; reduced data noise by 40% via preprocessing (lowercasing, tokenization, stopwords, punctuation, TF-IDF). Achieved 92.3% accuracy with F1 score of 0.90 using tuned Random Forest.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Television Data Analytics</h3>
+          <div class="project-tech">Python, Pandas, Matplotlib, Seaborn, Machine Learning</div>
+          <p>Engineered features from a dataset of 15,000+ TV shows and created 10+ visualizations to analyze popularity drivers. Trained multiple ML models and achieved 86% accuracy predicting show popularity.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="reveal">
+      <h2>Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skills-category">
+          <h3>Programming Languages</h3>
+          <ul class="skills-list">
+            <li>SQL</li>
+            <li>Excel</li>
+            <li>Python</li>
+          </ul>
+        </div>
+
+        <div class="skills-category">
+          <h3>Data Visualization</h3>
+          <ul class="skills-list">
+            <li>Tableau</li>
+            <li>PowerBI</li>
+            <li>Matplotlib</li>
+            <li>Seaborn</li>
+          </ul>
+        </div>
+
+        <div class="skills-category">
+          <h3>Libraries & Tools</h3>
+          <ul class="skills-list">
+            <li>Pandas</li>
+            <li>Numpy</li>
+            <li>Flask</li>
+            <li>OpenCV</li>
+            <li>Git</li>
+            <li>PyTorch</li>
+            <li>Tensorflow</li>
+          </ul>
+        </div>
+
+        <div class="skills-category">
+          <h3>Languages</h3>
+          <ul class="skills-list">
+            <li>English</li>
+            <li>Chinese</li>
+            <li>Japanese</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; <span id="current-year">2025</span> Tuoyu (Hiro) Xiangyuan</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
