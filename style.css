@@ -1,32 +1,27 @@
-/* ------------------------------------------------------------
-   PHOTOGRAPHY THEME — BEACH SUNSET (Clean Energy–style)
-   Works with the HTML structure I shared (top nav, hero, grids)
-------------------------------------------------------------- */
+/* ============================================================
+   HIRO — PHOTOGRAPHY & DATA
+   Clean, organized CSS: Base, Components, Themes (Dark/Light)
+============================================================ */
 
+/* ---------- Base Tokens (fallbacks / dark defaults) ---------- */
 :root{
-  /* Palette tuned for twilight → warm horizon */
-  --bg: #0a0d14;            /* page background (very dark blue) */
-  --ink: #f5f7fa;           /* primary text (near white) */
-  --muted: #b9c2d0;         /* secondary text */
-  --accent: #8bd3ff;        /* accent (cool cyan) */
-  --warm1: #ffb36b;         /* warm glow */
-  --warm2: #ff7a59;         /* horizon orange */
-  --twilight1:#13223a;      /* deep twilight */
-  --twilight2:#203a66;      /* mid twilight */
-  --glass: rgba(17,22,33,.55);
-  --border: rgba(255,255,255,.08);
+  --bg:#0b0f18;
+  --bg-2:#0b0f18;
+  --ink:#f5f7fa;
+  --muted:#b8c0cc;
+  --accent:#8bd3ff;
+  --border: rgba(255,255,255,.10);
   --card: rgba(20,26,38,.75);
+  --glass: rgba(17,22,33,.55);
   --shadow: 0 18px 40px rgba(0,0,0,.35);
   --radius: 16px;
   --radius-sm: 12px;
 }
 
-/* Reset-ish */
+/* ---------- Resets / Base ---------- */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 img{max-width:100%;display:block}
-
-/* Typography */
 body{
   font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--ink);
@@ -40,6 +35,7 @@ h2{font-size: clamp(24px, 3.2vw, 34px)}
 h3{font-size: clamp(18px, 2.2vw, 22px)}
 p{margin:0 0 1rem 0}
 .muted{color:var(--muted)}
+.sr-only{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}
 
 /* Layout helpers */
 .container{width:min(1120px, 92%); margin-inline:auto}
@@ -51,14 +47,12 @@ p{margin:0 0 1rem 0}
   .grid.two, .grid.three{grid-template-columns: 1fr}
 }
 
-/* ------------------------------------------------------------
-   Top Navbar (glassy, fixed)
-------------------------------------------------------------- */
+/* ---------- Header / Nav ---------- */
 .site-header{
-  position: sticky; top: 0; z-index: 50;
-  background: linear-gradient(to bottom, rgba(10,12,18,.9), rgba(10,12,18,.55));
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  position: sticky; top:0; z-index:50;
+  background: rgba(11,15,24,.70);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
 }
 .header-inner{
   height: 66px;
@@ -69,640 +63,19 @@ p{margin:0 0 1rem 0}
   letter-spacing: .08em; font-size: 14px; padding: 4px 0;
 }
 .nav ul{display:flex; gap:26px; list-style:none; margin:0; padding:0}
-.nav a{
-  color:var(--ink); text-decoration:none; opacity:.9;
-  font-weight: 600; letter-spacing:.02em
-}
+.nav a{color:var(--ink); text-decoration:none; opacity:.9; font-weight: 600; letter-spacing:.02em}
 .nav a:hover{opacity:1}
-.nav-toggle{
-  display:none; width:44px; height:40px; background:transparent; border:0; cursor:pointer;
-}
+.nav-toggle{display:none; width:44px; height:40px; background:transparent; border:0; cursor:pointer}
 .nav-toggle span{display:block; height:2px; background:var(--ink); margin:7px 0; width:26px}
-
 @media (max-width: 860px){
   .nav{position:fixed; inset:66px 0 auto 0; background: var(--glass);
-       transform: translateY(-120%); transition: .25s ease; border-bottom:1px solid var(--border)}
+       transform: translateY(-120%); transition: .25s ease; border-bottom:1px solid rgba(255,255,255,.06)}
   .nav ul{flex-direction:column; padding:14px 18px}
   .nav-toggle{display:block}
   .nav.open{transform: translateY(0)}
 }
 
-/* ------------------------------------------------------------
-   Hero — twilight sky to warm horizon gradient + subtle grain
-------------------------------------------------------------- */
-.hero{
-  position: relative; min-height: 64vh; display:grid; place-items:center;
-  background:
-    radial-gradient(1200px 55% at 50% 95%, rgba(255,170,110,.35), transparent 60%),
-    linear-gradient(180deg, var(--twilight2) 0%, var(--twilight1) 38%, #0e1524 58%, #0f1728 66%, #101a2f 72%, #0d1729 78%, #0b1624 84%, #0b1420 90%),
-    linear-gradient(180deg, rgba(0,0,0,.0) 55%, rgba(0,0,0,.2) 100%);
-  overflow: hidden;
-}
-.hero::before{
-  /* Warm horizon band like the screenshot */
-  content:""; position:absolute; inset:auto 0 0 0; height:32%;
-  background: linear-gradient(180deg, rgba(255,148,84,.32) 0%, rgba(255,120,70,.22) 40%, rgba(10,13,20,1) 100%);
-  pointer-events:none;
-}
-.hero::after{
-  /* faint film grain for photographic feel */
-  content:""; position:absolute; inset:0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.06"/></svg>');
-  opacity:.4; mix-blend-mode: soft-light; pointer-events:none;
-}
-.hero-inner{position:relative; text-align:center; padding: 38px 0}
-.hero h1{
-  font-size: clamp(28px, 5.8vw, 60px);
-  letter-spacing:.04em; text-transform: uppercase; font-weight: 900;
-  text-shadow: 0 6px 28px rgba(0,0,0,.45);
-  margin-bottom: 10px;
-}
-.hero p{
-  color: var(--muted);
-  font-size: clamp(14px, 1.6vw, 18px);
-  margin-bottom: 18px;
-}
-.btn{
-  display:inline-block; background: linear-gradient(90deg, var(--ink), #dfe8ff);
-  color:#0b0f18; padding: 10px 18px; border-radius: 999px;
-  text-decoration:none; font-weight:800; letter-spacing:.02em;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-}
-.btn:hover{transform: translateY(-1px); transition:.15s}
-
-/* ------------------------------------------------------------
-   Cards / Surfaces
-------------------------------------------------------------- */
-.card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 18px;
-}
-.card .card-body{padding-top:10px}
-
-/* Portrait + Coursework (About) */
-.portrait{
-  position:relative; overflow:hidden; border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
-.portrait img{
-  width:100%; height:100%; object-fit: cover;
-  filter: contrast(1.04) saturate(1.06) brightness(1.02);
-}
-.portrait::after{
-  /* sunset glow that respects original beach colors */
-  content:""; position:absolute; inset:0;
-  background:
-    radial-gradient(60% 50% at 50% 90%, rgba(255,150,100,.28), transparent 60%),
-    linear-gradient(135deg, rgba(139,211,255,.12), rgba(32,58,102,.10));
-  mix-blend-mode: soft-light;
-  pointer-events:none;
-}
-.coursework h3{margin:8px 0 6px}
-.coursework ul{margin:0; padding-left: 18px}
-
-/* Inline links under About */
-.inline-meta{
-  display:flex; flex-wrap:wrap; gap:10px; padding:0; margin:12px 0 0; list-style:none
-}
-.inline-meta a{color:var(--ink); opacity:.9; text-decoration:none}
-.inline-meta a:hover{opacity:1}
-
-/* ------------------------------------------------------------
-   Experience
-------------------------------------------------------------- */
-#experience h2{margin-bottom: 18px}
-.exp{position:relative}
-.exp-header{
-  display:flex; align-items:baseline; justify-content:space-between; gap:14px
-}
-.role{margin-top:6px; color: var(--accent); font-weight: 700}
-.exp ul{margin: 10px 0 0 0; padding-left: 18px}
-.exp li{margin: 6px 0}
-
-/* ------------------------------------------------------------
-   Project cards (tech + photo)
-------------------------------------------------------------- */
-.project .project-media{
-  aspect-ratio: 16/9; overflow:hidden;
-  border-radius: var(--radius-sm);
-  border:1px solid var(--border);
-  margin-bottom: 12px;
-  background: linear-gradient(180deg, #23324c, #181f2c);
-}
-.project .project-media img{width:100%; height:100%; object-fit:cover}
-
-.photo .photo-media.ratio{
-  aspect-ratio: 4/3; overflow:hidden;
-  border-radius: var(--radius-sm);
-  border:1px solid var(--border);
-  background: linear-gradient(180deg, #23324c, #181f2c);
-}
-.photo .photo-media img{width:100%; height:100%; object-fit:cover}
-
-/* ------------------------------------------------------------
-   Contact form
-------------------------------------------------------------- */
-.contact-list{list-style:none; padding:0; margin:10px 0 0}
-.contact-list li{margin:6px 0}
-
-form#contact-form input,
-form#contact-form textarea{
-  width:100%; background:#0f131c; border:1px solid var(--border); color:var(--ink);
-  padding:12px 12px; border-radius: 12px; margin:8px 0;
-}
-form#contact-form input:focus,
-form#contact-form textarea:focus{
-  outline:2px solid var(--accent); border-color: var(--accent)
-}
-form#contact-form .btn{margin-top:8px}
-.form-message{margin:10px 0 0; color:var(--muted)}
-
-/* ------------------------------------------------------------
-   Section separators (subtle wave edge between sections)
-------------------------------------------------------------- */
-.section{
-  position:relative;
-  background:
-    radial-gradient(1400px 60% at 50% 110%, rgba(255,122,89,.07), transparent 60%),
-    radial-gradient(1100px 55% at 50% -10%, rgba(139,211,255,.06), transparent 60%);
-}
-.section::before{
-  /* faint top ridge to echo shoreline horizon */
-  content:""; position:absolute; inset:0 0 auto 0; height:1px; background: var(--border)
-}
-
-/* ------------------------------------------------------------
-   Footer
-------------------------------------------------------------- */
-.site-footer{
-  border-top: 1px solid var(--border);
-  background: linear-gradient(180deg, #0b0f18 0%, #0a0d14 100%);
-  padding: 24px 0;
-}
-.footer-inner{display:flex; justify-content:center; align-items:center}
-
-/* ============= EXP CARDS — Faded Mood Panels ============= */
-.exp.card{
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--card) 85%, black 15%);
-  box-shadow: var(--shadow);
-  padding: 20px 20px 18px 20px;
-  isolation: isolate;             /* keeps overlays inside */
-}
-
-/* base mood tokens (can be overridden per-card) */
-.exp.card{
-  --mood-1: #203a66;  /* cool twilight */
-  --mood-2: #ff9966;  /* warm horizon */
-  --grain-opacity: .07;
-  --vignette: rgba(0,0,0,.18);
-  --glass: rgba(15,19,28,.45);
-}
-
-/* soft “faded” gradient & glass */
-.exp.card::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    linear-gradient(140deg, color-mix(in srgb, var(--mood-1) 60%, transparent) 0%,
-                           transparent 45%),
-    linear-gradient(0deg, color-mix(in srgb, var(--mood-2) 22%, transparent) 0%,
-                         transparent 60%);
-  opacity:.85;
-  mix-blend-mode: soft-light;
-  z-index: -1;
-}
-
-/* optional background image per card: set with style="--bg-img:url('...')" */
-.exp.card::after{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    var(--bg-img, none) center/cover no-repeat,
-    radial-gradient(120% 70% at 50% 110%, var(--vignette), transparent 60%);
-  opacity:.28;
-  z-index:-2;
-  filter: saturate(1.05) contrast(1.02);
-}
-
-/* film grain */
-.exp .grain{
-  position:absolute; inset:0; z-index:-1; pointer-events:none;
-  opacity: var(--grain-opacity);
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="1"/></svg>');
-  mix-blend-mode: soft-light;
-}
-
-/* header line & tag */
-.exp-header{
-  display:flex; align-items:baseline; justify-content:space-between; gap:14px;
-  border-bottom: 1px dashed color-mix(in srgb, var(--ink) 25%, transparent);
-  padding-bottom:8px; margin-bottom:10px;
-}
-.exp .role{
-  display:inline-block; margin-top:8px;
-  background: color-mix(in srgb, var(--glass) 100%, transparent);
-  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-  padding: 4px 10px; border-radius: 999px; font-weight: 700; color: var(--ink);
-}
-
-/* list spacing */
-.exp ul{margin: 12px 0 0 0; padding-left: 18px}
-.exp li{margin: 8px 0}
-
-/* subtle hover lift */
-@media (hover:hover){
-  .exp.card{transition: transform .25s ease, box-shadow .25s ease}
-  .exp.card:hover{transform: translateY(-3px); box-shadow: 0 20px 44px rgba(0,0,0,.45)}
-}
-
-/* accessibility: reduce motion */
-@media (prefers-reduced-motion: reduce){
-  .exp.card{transition: none}
-}
-
-/* ===== Mood variants (set via data-mood on the .exp.card) ===== */
-.exp.card[data-mood="sunset"]{
-  --mood-1:#1a2d4f;
-  --mood-2:#ff9366;
-}
-.exp.card[data-mood="ocean"]{
-  --mood-1:#0e3346;
-  --mood-2:#6cd4ff;
-}
-.exp.card[data-mood="palm"]{
-  --mood-1:#233a2a;
-  --mood-2:#9be37a;
-}
-.exp.card[data-mood="dawn"]{
-  --mood-1:#3a2d58;
-  --mood-2:#ffb3a1;
-}
-
-/* optional tiny “avatar/initials chip” */
-.exp-chip{
-  position:absolute; top:14px; right:14px;
-  background: color-mix(in srgb, var(--ink) 92%, transparent);
-  color:#0b0f18;
-  font-weight:800; font-size:12px; letter-spacing:.06em;
-  padding:6px 9px; border-radius:999px;
-  mix-blend-mode: screen; opacity:.85;
-}
-
-/* optional personal note line (faded mood) */
-.exp-note{
-  margin-top:10px; font-style: italic; color: color-mix(in srgb, var(--ink) 70%, transparent);
-  opacity:.85;
-}
-
-/* ====== REMOVE CHIP + MOOD NOTE VISUALLY (keep mood styling) ====== */
-.exp-chip, .exp-note { display: none !important; }
-
-/* ====== THEME TOKENS ======
-   Dark = current (twilight beach).
-   Light = beige sunrise.
-   We scope light mode on <html data-theme="light">.
-*/
-:root{
-  /* (these are already defined above in your CSS; included here for clarity) */
-  /* Dark tokens remain as-is */
-}
-
-/* ---------- Dark mode contact form ---------- */
-html:not([data-theme="light"]) form#contact-form input,
-html:not([data-theme="light"]) form#contact-form textarea {
-  background: #0f131c;
-  border: 1px solid rgba(255,255,255,.12);
-  color: #f5f7fa;
-  padding: 12px 14px;
-  border-radius: 10px;
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-size: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.6);
-}
-
-html:not([data-theme="light"]) form#contact-form input::placeholder,
-html:not([data-theme="light"]) form#contact-form textarea::placeholder {
-  color: #9ba3af; /* muted gray */
-}
-
-html:not([data-theme="light"]) form#contact-form input:focus,
-html:not([data-theme="light"]) form#contact-form textarea:focus {
-  outline: none;
-  border-color: #8bd3ff;   /* twilight accent */
-  box-shadow: 0 0 0 3px rgba(139,211,255,.2);
-}
-
-/* ---------- Dark mode contact links ---------- */
-html:not([data-theme="light"]) .contact-list a {
-  font-weight: 600;           /* bold */
-  text-decoration: none;      /* no underline */
-  color: #8bd3ff;             /* soft cyan accent */
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-}
-
-html:not([data-theme="light"]) .contact-list a:hover {
-  text-decoration: underline;
-  color: #58a8d8;             /* deeper twilight blue on hover */
-}
-
-html:not([data-theme="light"]) .contact-list strong {
-  font-weight: 700;
-  color: var(--ink);
-}
-/* ---------- About card: moody, organized, emphasized ---------- */
-.about-card{
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  padding: 22px 22px 18px;
-  border: 1px solid var(--border);
-  isolation: isolate;
-}
-
-/* inherit exp moods */
-.about-card{
-  --mood-1: #0e3346; /* cool ocean */
-  --mood-2: #6cd4ff;
-  --grain-opacity: .06;
-}
-
-/* ============================================================
-   BRITTANY-STYLE DARK VIBE (applies only in dark mode)
-   Deep navy background, teal accent, numbered nav, outlined CTAs,
-   softer muted text, crisp hero typography.
-============================================================ */
-html:not([data-theme="light"]) {
-  /* Core palette (classic Brittany vibe) */
-  --bg: #0a192f;      /* page background (deep navy) */
-  --bg-2:#0a192f;
-  --card:#112240;     /* panels */
-  --ink:#ccd6f6;      /* primary text (soft ice) */
-  --muted:#8892b0;    /* secondary text */
-  --accent:#64ffda;   /* teal accent */
-  --border: rgba(100,255,218,.18);
-  --glass: rgba(17,34,64,.65);
-  --shadow: 0 18px 40px rgba(2, 12, 27, .35);
-}
-
-/* Page + typography tweaks */
-html:not([data-theme="light"]) body{
-  color: var(--ink);
-}
-html:not([data-theme="light"]) h1,
-html:not([data-theme="light"]) h2,
-html:not([data-theme="light"]) h3{
-  color: var(--ink);
-  letter-spacing: .02em;
-}
-
-/* Header: flat dark, accent hover */
-html:not([data-theme="light"]) .site-header{
-  background: rgba(10,25,47,.85);
-  border-bottom: 1px solid rgba(100,255,218,.08);
-  backdrop-filter: blur(6px);
-}
-html:not([data-theme="light"]) .brand{ color: var(--ink) }
-
-/* Numbered nav like “01. About” (auto) */
-html:not([data-theme="light"]) .nav ul{ counter-reset: nav }
-html:not([data-theme="light"]) .nav a{
-  color: var(--muted);
-  font-weight: 600;
-}
-html:not([data-theme="light"]) .nav li{ counter-increment: nav }
-html:not([data-theme="light"]) .nav a::before{
-  content: "0" counter(nav) ". ";
-  color: var(--accent);
-  font-weight: 700;
-  margin-right: 6px;
-}
-html:not([data-theme="light"]) .nav a:hover{ color: var(--ink) }
-
-/* Hero: simple deep navy, no orange — focus on big type */
-html:not([data-theme="light"]) .hero{
-  min-height: 68vh;
-  background: linear-gradient(180deg, #0b1c34 0%, #0a192f 60%, #0a192f 100%);
-}
-html:not([data-theme="light"]) .hero::before{ background: none }
-html:not([data-theme="light"]) .hero::after{ opacity:.08 }
-html:not([data-theme="light"]) .hero h1{
-  font-size: clamp(34px, 6vw, 76px);
-  font-weight: 900;
-}
-html:not([data-theme="light"]) .hero p{ color: var(--muted) }
-
-/* CTA: outlined with teal accent */
-html:not([data-theme="light"]) .btn{
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  box-shadow: none;
-}
-html:not([data-theme="light"]) .btn:hover{
-  background: rgba(100,255,218,.08);
-  transform: translateY(-2px);
-}
-
-/* Cards: navy panels, subtle border, lift on hover */
-html:not([data-theme="light"]) .card{
-  background: var(--card);
-  border: 1px solid rgba(100,255,218,.08);
-  box-shadow: var(--shadow);
-}
-@media (hover:hover){
-  html:not([data-theme="light"]) .card{
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  }
-  html:not([data-theme="light"]) .card:hover{
-    transform: translateY(-4px);
-    border-color: rgba(100,255,218,.16);
-    box-shadow: 0 24px 48px rgba(2,12,27,.5);
-  }
-}
-
-/* Experience “mood” panels: keep moods but tone overlays down */
-html:not([data-theme="light"]) .exp.card::before{ opacity:.55 }
-html:not([data-theme="light"]) .exp.card::after{ opacity:.16 }
-
-/* Links everywhere: teal, bold, no underline until hover */
-html:not([data-theme="light"]) a{
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-}
-html:not([data-theme="light"]) a:hover{ text-decoration: underline }
-
-/* About card + badges to match */
-html:not([data-theme="light"]) .about-card::before{ opacity:.5 }
-html:not([data-theme="light"]) .about-badges li{
-  background: rgba(100,255,218,.06);
-  border-color: rgba(100,255,218,.25);
-}
-
-/* Contact form (matches vibe) */
-html:not([data-theme="light"]) form#contact-form input,
-html:not([data-theme="light"]) form#contact-form textarea{
-  background: #0b1e3a;
-  border: 1px solid rgba(100,255,218,.16);
-  color: var(--ink);
-}
-html:not([data-theme="light"]) form#contact-form input:focus,
-html:not([data-theme="light"]) form#contact-form textarea:focus{
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(100,255,218,.18);
-}
-
-/* Footer */
-html:not([data-theme="light"]) .site-footer{
-  background: #0a192f;
-  border-top: 1px solid rgba(100,255,218,.08);
-}
-
-/* mood overlay like exp cards */
-.about-card::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    linear-gradient(140deg, color-mix(in srgb, var(--mood-1) 55%, transparent) 0%, transparent 46%),
-    linear-gradient(0deg, color-mix(in srgb, var(--mood-2) 18%, transparent) 0%, transparent 60%);
-  opacity:.9; mix-blend-mode: soft-light; z-index:-1;
-}
-.about-card .grain{
-  position:absolute; inset:0; z-index:-1; pointer-events:none;
-  opacity: var(--grain-opacity);
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="1"/></svg>');
-  mix-blend-mode: soft-light;
-}
-
-.about-head{
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  margin-bottom: 10px;
-}
-.about-tag{
-  font-size: 12px; font-weight: 800; letter-spacing:.06em;
-  padding: 6px 10px; border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
-  background: color-mix(in srgb, var(--glass) 100%, transparent);
-}
-
-.about-blurb{
-  margin: 6px 0 10px 0;
-  font-size: clamp(14px, 1.6vw, 16px);
-}
-
-.about-badges{
-  display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin: 6px 0 10px;
-}
-.about-badges li{
-  padding:6px 10px; border-radius:999px; font-weight:700;
-  border:1px dashed color-mix(in srgb, var(--ink) 25%, transparent);
-  background: color-mix(in srgb, var(--card) 80%, transparent);
-}
-
-/* links row */
-.about-links a{
-  font-weight:700; text-decoration:none;
-}
-.about-links a:hover{ text-decoration:underline }
-
-/* side column tweaks */
-.about-side{ display:grid; gap:14px }
-.about-coursework h3{ margin: 6px 0 4px }
-
-/* hover / tilt like experience */
-.tilt-parallax{ transition: transform .25s ease, box-shadow .25s ease }
-@media (hover:hover){
-  .tilt-parallax:hover{ transform: translateY(-4px); box-shadow: 0 22px 46px rgba(0,0,0,.45) }
-}
-
-/* Light theme variant: warmer mood */
-html[data-theme="light"] .about-card{
-  --mood-1:#d8a273; /* sandy copper */
-  --mood-2:#ffe2c5;
-}
-
-
-
-/* ---------- LIGHT THEME (Beige Sunrise) ---------- */
-html[data-theme="light"]{
-  --bg: #f7efe6;               /* warm beige */
-  --bg-2:#f3e7db;
-  --ink: #1b1c1f;              /* deep ink text */
-  --muted:#6f6a63;             /* soft taupe text */
-  --accent:#c76a2b;            /* sunrise copper/orange */
-  --border: rgba(20,16,12,.14);
-  --card: rgba(255,255,255,.85);     /* creamy card */
-  --glass: rgba(255,255,255,.65);
-  --shadow: 0 14px 32px rgba(120,90,60,.18);
-}
-
-/* Header (uses tokens already) */
-html[data-theme="light"] .site-header{
-  background: linear-gradient(to bottom, rgba(255,255,255,.85), rgba(255,255,255,.6));
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-}
-html[data-theme="light"] .brand,
-html[data-theme="light"] .nav a{ color: var(--ink); }
-
-/* Hero — light sunrise gradient */
-html[data-theme="light"] .hero{
-  background:
-    radial-gradient(1200px 55% at 50% 95%, rgba(255,196,140,.50), transparent 60%),
-    linear-gradient(180deg, #fdeedb 0%, #f8e5cf 38%, #f2dac2 58%, #eed2b8 72%, #ead0b5 86%, #f7efe6 100%);
-}
-html[data-theme="light"] .hero::before{
-  background: linear-gradient(180deg, rgba(255,184,120,.55) 0%, rgba(255,149,93,.35) 40%, rgba(247,239,230,1) 100%);
-}
-html[data-theme="light"] .hero::after{
-  opacity:.16;                 /* lighter grain in light mode */
-}
-
-/* Cards / surfaces */
-html[data-theme="light"] .card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-/* Experience mood panels still work; adjust their “glass” intensity in light */
-html[data-theme="light"] .exp.card{
-  background: color-mix(in srgb, var(--card) 92%, white 8%);
-  border: 1px solid var(--border);
-}
-
-/* Section background subtleties */
-html[data-theme="light"] .section{
-  background:
-    radial-gradient(1400px 60% at 50% 110%, rgba(255,170,120,.10), transparent 60%),
-    radial-gradient(1100px 55% at 50% -10%, rgba(199,106,43,.06), transparent 60%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-}
-html[data-theme="light"] .section::before{
-  background: var(--border);
-}
-
-/* Buttons readable in light */
-html[data-theme="light"] .btn{
-  background: linear-gradient(90deg, #1b1c1f, #2b2e33);
-  color: #fff;
-}
-
-/* Footer */
-html[data-theme="light"] .site-footer{
-  background: linear-gradient(180deg, #f0e4d7 0%, #f7efe6 100%);
-  border-top: 1px solid var(--border);
-  color: var(--ink);
-}
-
-/* ---------- Theme Toggle Button ---------- */
+/* Theme toggle */
 .theme-toggle{
   margin-left: 10px;
   background: transparent;
@@ -713,246 +86,367 @@ html[data-theme="light"] .site-footer{
   font-weight: 700;
   cursor: pointer;
 }
-.theme-toggle:hover{
-  background: var(--glass);
-}
-/* Light mode button — white + beige vibe */
-html[data-theme="light"] .btn {
-  background: linear-gradient(90deg, #fff 0%, #f7efe6 100%); /* white → beige gradient */
-  color: #1b1c1f;              /* dark text for contrast */
-  border: 1px solid rgba(0,0,0,.08);
-  box-shadow: 0 4px 12px rgba(120,90,60,.18);
-}
+.theme-toggle:hover{ background: var(--glass) }
 
-html[data-theme="light"] .btn:hover {
-  background: linear-gradient(90deg, #fff 0%, #f3e7db 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(120,90,60,.22);
+/* ---------- Hero ---------- */
+.hero{
+  position: relative; min-height: 64vh; display:grid; place-items:center;
+  background: linear-gradient(180deg, #0b1c34 0%, #0a192f 60%, #0a192f 100%); /* overridden by themes */
 }
-/* ---------- Light mode contact form styling ---------- */
-html[data-theme="light"] form#contact-form input,
-html[data-theme="light"] form#contact-form textarea {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.12);
-  color: #1b1c1f;
-  padding: 12px 14px;
-  border-radius: 10px;
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-size: 15px;
-  box-shadow: 0 2px 6px rgba(120,90,60,.08);
-}
+.hero-inner{ position: relative; width:100% }
+.hero-grid{ display:grid; gap:28px; align-items:center; grid-template-columns: 1.2fr .8fr }
+@media (max-width:980px){ .hero-grid{ grid-template-columns: 1fr } }
+.hero h1{ font-size: clamp(34px, 6vw, 76px); font-weight: 900; letter-spacing:.02em; margin-bottom:10px }
+.hero p{ color: var(--muted); margin-bottom: 18px }
+.btn{ display:inline-block; background: linear-gradient(90deg, var(--ink), #dfe8ff); color:#0b0f18;
+      padding: 10px 18px; border-radius: 999px; text-decoration:none; font-weight:800; box-shadow: 0 10px 30px rgba(0,0,0,.25) }
+.btn:hover{ transform: translateY(-2px); transition:.15s }
 
-html[data-theme="light"] form#contact-form input::placeholder,
-html[data-theme="light"] form#contact-form textarea::placeholder {
-  color: #9c8f82; /* softer beige-taupe placeholder */
-}
+/* Hero right: mosaic (light only) */
+.hero-art{ display:none; width: 100%; aspect-ratio: 1 / 1; border-radius: 18px; border:1px solid var(--border); background: #f8f8f8; box-shadow: var(--shadow); position: relative; overflow: hidden; cursor: pointer }
+.hero-art::after{ content:"click to refresh"; position:absolute; right:10px; bottom:10px; font-size: 12px; color:#6b7280; background: rgba(255,255,255,.8); padding:4px 8px; border-radius:999px; border:1px solid var(--border) }
 
-html[data-theme="light"] form#contact-form input:focus,
-html[data-theme="light"] form#contact-form textarea:focus {
-  outline: none;
-  border-color: #c76a2b;   /* sunrise accent */
-  box-shadow: 0 0 0 3px rgba(199,106,43,.18);
-}
-
-/* ---------- Contact links ---------- */
-.contact-list a {
-  font-weight: 600;              /* bold */
-  text-decoration: none;         /* no underline */
-  color: var(--accent);          /* accent color */
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-}
-
-.contact-list a:hover {
-  text-decoration: underline;    /* subtle underline on hover */
-  color: #a8551e;                /* slightly deeper orange */
-}
-
-/* ---------- Contact labels ---------- */
-.contact-list strong {
-  font-weight: 700;
-  color: var(--ink);
-}
-/* ================================
-   MONICA-STYLE LIGHT MODE
-   Clean white, bold black, simple links,
-   playful hero mosaic
-==================================*/
-html[data-theme="light"]{
-  --bg:#ffffff;
-  --bg-2:#ffffff;
-  --ink:#0f1115;         /* near-black text */
-  --muted:#494f57;       /* softer paragraph */
-  --accent:#0f1115;      /* links/buttons mostly black */
-  --border: rgba(15,17,21,.10);
-  --card:#ffffff;
-  --glass: rgba(255,255,255,.8);
-  --shadow: 0 10px 24px rgba(0,0,0,.08);
-}
-
-/* base surfaces */
-html[data-theme="light"] body{ background: var(--bg); color: var(--ink) }
-html[data-theme="light"] .site-header{
-  background:#fff; border-bottom:1px solid var(--border); backdrop-filter: none;
-}
-html[data-theme="light"] .brand,
-html[data-theme="light"] .nav a{ color:#0f1115 }
-
-/* simple nav (no numbers in light) */
-html[data-theme="light"] .nav a{ font-weight:700; letter-spacing:.01em }
-html[data-theme="light"] .nav a:hover{ text-decoration: underline }
-
-/* hero: flat white with subtle bottom fade */
-html[data-theme="light"] .hero{
-  min-height: 64vh;
-  background:
-    linear-gradient(180deg, #ffffff 0%, #ffffff 68%, #f6f3ef 100%);
-}
-html[data-theme="light"] .hero::before,
-html[data-theme="light"] .hero::after{ content:none }
-
-html[data-theme="light"] .hero h1{
-  color:#0f1115;
-  font-weight: 900;
-  letter-spacing: .01em;
-}
-html[data-theme="light"] .hero p{ color:#494f57 }
-
-/* CTA: outlined black */
-html[data-theme="light"] .btn{
-  background:#fff;
-  color:#0f1115;
-  border:1.5px solid #0f1115;
-  box-shadow:none;
-}
-html[data-theme="light"] .btn:hover{
-  background:#0f1115; color:#fff; transform:translateY(-2px)
-}
-
-/* cards: flat white with soft border + shadow */
-html[data-theme="light"] .card{
-  background:#fff; border:1px solid var(--border); box-shadow: var(--shadow);
-}
-
-/* experience/ about cards keep mood overlays but tone way down */
-html[data-theme="light"] .exp.card::before,
-html[data-theme="light"] .about-card::before{ opacity:.18 }
-html[data-theme="light"] .exp.card::after,
-html[data-theme="light"] .about-card .grain{ opacity:.06 }
-
-/* contact links: bold black, no underline until hover */
-html[data-theme="light"] .contact-list a,
-html[data-theme="light"] .about-links a{
-  color:#0f1115; font-weight:800; text-decoration:none;
-}
-html[data-theme="light"] .contact-list a:hover,
-html[data-theme="light"] .about-links a:hover{
-  text-decoration: underline;
-}
-
-/* ---------- Hero mosaic block ---------- */
-.hero-inner.mosaic-layout{
-  display:grid; gap:28px; align-items:center;
-  grid-template-columns: 1.1fr .9fr;
-}
-@media (max-width: 980px){
-  .hero-inner.mosaic-layout{ grid-template-columns: 1fr }
-}
-
-/* Mosaic container (only show in light mode) */
-html[data-theme="light"] .hero-art{
-  display:block;
-  width:100%; aspect-ratio: 1/1;
-  border-radius: 18px;
-  border:1px solid var(--border);
-  background: #f8f8f8;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-html[data-theme="light"] .hero-art::after{
-  content:"click to refresh";
-  position:absolute; inset:auto 10px 10px auto;
-  font-size: 12px; color:#6b7280; background: rgba(255,255,255,.8);
-  padding:4px 8px; border-radius:999px; border:1px solid var(--border);
-}
-
-/* hide mosaic on dark mode */
-html:not([data-theme="light"]) .hero-art{ display:none }
-
-/* optional: tighten About header spacing in light */
-html[data-theme="light"] .about-head{ margin-bottom: 6px }
-
-/* Hero two-column layout */
-.hero-grid{
-  display: grid; gap: 28px; align-items: center;
-  grid-template-columns: 1.2fr .8fr;
-}
-@media (max-width: 980px){
-  .hero-grid{ grid-template-columns: 1fr }
-}
-
-/* Dark-mode shuffle panel shows; light-mode hides */
-.hero-shuffle{ display: none }                /* default */
-html:not([data-theme="light"]) .hero-shuffle{ display: block }
-
-html[data-theme="light"] .hero-art{ display: block }   /* mosaic on light */
-html:not([data-theme="light"]) .hero-art{ display: none } /* hide mosaic on dark */
-
-/* Shuffle panel shell (Brittany-style navy card) */
-.hero-shuffle{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(100,255,218,.12);
-  background: #0a192f;
-  box-shadow: 0 24px 48px rgba(2,12,27,.5);
-  user-select: none;
-  cursor: pointer;
-}
-
-/* Images (cross-fade) */
-.hs-img{
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: opacity .5s ease, transform .5s ease;
-  opacity: 0;
-}
-.hs-current{ opacity: 1 }
-.fading-in .hs-next{ opacity: 1; transform: scale(1.01) } /* tiny zoom for polish */
-
-/* Caption + button */
-.hs-caption{
-  position: absolute; left: 12px; bottom: 12px;
-  background: rgba(17,34,64,.65);
-  color: #ccd6f6; font-weight: 700; font-size: 12px;
-  padding: 6px 10px; border-radius: 999px;
-  border: 1px solid rgba(100,255,218,.18);
-}
-
-.shuffle-btn{
-  position: absolute; right: 12px; top: 12px;
-  background: transparent;
-  color: #64ffda;
-  border: 1px solid #64ffda;
-  padding: 6px 10px; border-radius: 999px;
-  font-weight: 800; cursor: pointer;
-}
+/* Hero right: photo shuffle (dark only) */
+.hero-shuffle{ display:none; position: relative; width:100%; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; border: 1px solid rgba(100,255,218,.12); background: #0a192f; box-shadow: 0 24px 48px rgba(2,12,27,.5); user-select:none; cursor:pointer }
+.hs-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: opacity .5s ease, transform .5s ease; opacity:0 }
+.hs-current{ opacity:1 }
+.fading-in .hs-next{ opacity:1; transform: scale(1.01) }
+.hs-caption{ position:absolute; left:12px; bottom:12px; background: rgba(17,34,64,.65); color:#ccd6f6; font-weight:700; font-size:12px; padding:6px 10px; border-radius:999px; border: 1px solid rgba(100,255,218,.18) }
+.shuffle-btn{ position:absolute; right:12px; top:12px; background:transparent; color:#64ffda; border:1px solid #64ffda; padding:6px 10px; border-radius:999px; font-weight:800; cursor:pointer }
 .shuffle-btn:hover{ background: rgba(100,255,218,.08) }
 
-/* Light-mode safety (if you ever choose to show it there) */
-html[data-theme="light"] .hero-shuffle{
-  border-color: rgba(15,17,21,.10);
-  box-shadow: 0 12px 24px rgba(0,0,0,.08);
-  background: #fff;
+/* ---------- Cards / Shared ---------- */
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
 }
-html[data-theme="light"] .hs-caption{
-  background: rgba(255,255,255,.85);
-  color: #0f1115; border-color: rgba(15,17,21,.10);
+.card .card-body{ padding-top:10px }
+.inline-meta{ display:flex; flex-wrap:wrap; gap:10px; padding:0; margin:12px 0 0; list-style:none }
+.inline-meta a{ color:var(--ink); opacity:.9; text-decoration:none }
+.inline-meta a:hover{ opacity:1 }
+
+/* Portrait & Coursework */
+.portrait{ position:relative; overflow:hidden; border-radius: var(--radius); border: 1px solid var(--border) }
+.portrait img{ width:100%; height:100%; object-fit: cover; filter: contrast(1.04) saturate(1.06) brightness(1.02) }
+.portrait::after{
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(60% 50% at 50% 90%, rgba(255,150,100,.28), transparent 60%),
+              linear-gradient(135deg, rgba(139,211,255,.12), rgba(32,58,102,.10));
+  mix-blend-mode: soft-light; pointer-events:none;
 }
-html[data-theme="light"] .shuffle-btn{
-  color: #0f1115; border-color: #0f1115;
+
+/* Experience cards — mood overlays */
+.exp.card{ position:relative; overflow:hidden; border-radius:18px; padding:20px 20px 18px; isolation:isolate }
+.exp.card{ --mood-1:#203a66; --mood-2:#ff9966; --grain-opacity:.07; --vignette:rgba(0,0,0,.18) }
+.exp.card::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(140deg, color-mix(in srgb, var(--mood-1) 60%, transparent) 0%, transparent 46%),
+              linear-gradient(0deg,   color-mix(in srgb, var(--mood-2) 22%, transparent) 0%, transparent 60%);
+  opacity:.85; mix-blend-mode: soft-light; z-index:-1;
+}
+.exp.card::after{
+  content:""; position:absolute; inset:0;
+  background: var(--bg-img, none) center/cover no-repeat,
+              radial-gradient(120% 70% at 50% 110%, var(--vignette), transparent 60%);
+  opacity:.28; z-index:-2; filter: saturate(1.05) contrast(1.02);
+}
+.exp .grain{ position:absolute; inset:0; z-index:-1; pointer-events:none; opacity: var(--grain-opacity);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="1"/></svg>');
+  mix-blend-mode: soft-light;
+}
+.exp-header{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; border-bottom: 1px dashed color-mix(in srgb, var(--ink) 25%, transparent); padding-bottom:8px; margin-bottom:10px }
+.role{ margin-top:6px; color: var(--accent); font-weight: 700 }
+.exp ul{ margin: 12px 0 0 0; padding-left: 18px }
+.exp li{ margin: 8px 0 }
+@media (hover:hover){ .exp.card{ transition: transform .25s ease, box-shadow .25s ease } .exp.card:hover{ transform: translateY(-3px); box-shadow: 0 20px 44px rgba(0,0,0,.45) } }
+
+/* Mood variants */
+.exp.card[data-mood="sunset"]{ --mood-1:#1a2d4f; --mood-2:#ff9366 }
+.exp.card[data-mood="ocean"] { --mood-1:#0e3346; --mood-2:#6cd4ff }
+.exp.card[data-mood="palm"]  { --mood-1:#233a2a; --mood-2:#9be37a }
+.exp.card[data-mood="dawn"]  { --mood-1:#3a2d58; --mood-2:#ffb3a1 }
+
+/* About card */
+.about-card{ position:relative; overflow:hidden; border-radius:18px; padding:22px 22px 18px; border:1px solid var(--border); isolation:isolate }
+.about-card::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(140deg, color-mix(in srgb, #0e3346 55%, transparent) 0%, transparent 46%),
+              linear-gradient(0deg,   color-mix(in srgb, #6cd4ff 18%, transparent) 0%, transparent 60%);
+  opacity:.9; mix-blend-mode: soft-light; z-index:-1;
+}
+.about-card .grain{ position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.06;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="1"/></svg>');
+  mix-blend-mode: soft-light;
+}
+.about-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px }
+.about-tag{ font-size:12px; font-weight:800; letter-spacing:.06em; padding:6px 10px; border-radius:999px; border:1px solid color-mix(in srgb, var(--border) 85%, transparent); background: color-mix(in srgb, var(--glass) 100%, transparent) }
+.about-blurb{ margin: 6px 0 10px 0; font-size: clamp(14px, 1.6vw, 16px) }
+.about-badges{ display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin: 6px 0 10px }
+.about-badges li{ padding:6px 10px; border-radius:999px; font-weight:700; border:1px dashed color-mix(in srgb, var(--ink) 25%, transparent); background: color-mix(in srgb, var(--card) 80%, transparent) }
+.about-links a{ font-weight:700; text-decoration:none }
+.about-links a:hover{ text-decoration:underline }
+.about-side{ display:grid; gap:14px }
+.about-coursework h3{ margin:6px 0 4px }
+
+/* Projects / Photos */
+.project .project-media{ aspect-ratio: 16/9; overflow:hidden; border-radius: var(--radius-sm); border:1px solid var(--border); margin-bottom:12px; background: linear-gradient(180deg, #23324c, #181f2c) }
+.project .project-media img{ width:100%; height:100%; object-fit:cover }
+.photo .photo-media.ratio{ aspect-ratio: 4/3; overflow:hidden; border-radius: var(--radius-sm); border:1px solid var(--border); background: linear-gradient(180deg, #23324c, #181f2c) }
+.photo .photo-media img{ width:100%; height:100%; object-fit:cover }
+
+/* Contact */
+.contact-list{ list-style:none; padding:0; margin:10px 0 0 }
+.contact-list li{ margin:6px 0 }
+form#contact-form input, form#contact-form textarea{ width:100%; background:#0f131c; border:1px solid rgba(255,255,255,.12); color:#f5f7fa; padding:12px 14px; border-radius:10px; font-size:15px; box-shadow: 0 2px 6px rgba(0,0,0,.6) }
+form#contact-form input::placeholder, form#contact-form textarea::placeholder{ color:#9ba3af }
+form#contact-form input:focus, form#contact-form textarea:focus{ outline:none; border-color:#8bd3ff; box-shadow: 0 0 0 3px rgba(139,211,255,.2) }
+form#contact-form .btn{ margin-top:8px }
+.form-message{ margin:10px 0 0; color: var(--muted) }
+
+/* Footer */
+.site-footer{ border-top:1px solid rgba(255,255,255,.06); padding:24px 0; background: #0a0d14 }
+.footer-inner{ display:flex; justify-content:center; align-items:center }
+
+/* ---------- LIGHT THEME (Monica-style) ---------- */
+html[data-theme="light"]{
+  --bg:#ffffff; --bg-2:#ffffff; --ink:#0f1115; --muted:#494f57; --accent:#0f1115;
+  --border: rgba(15,17,21,.10); --card:#ffffff; --glass: rgba(255,255,255,.8); --shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+html[data-theme="light"] body{ background:var(--bg); color:var(--ink) }
+html[data-theme="light"] .site-header{ background:#fff; border-bottom:1px solid var(--border); backdrop-filter:none }
+html[data-theme="light"] .brand, html[data-theme="light"] .nav a{ color:#0f1115 }
+html[data-theme="light"] .nav a{ font-weight:700 } .nav a:hover{ text-decoration: underline }
+html[data-theme="light"] .hero{ background: linear-gradient(180deg, #ffffff 0%, #ffffff 68%, #f6f3ef 100%) }
+html[data-theme="light"] .hero h1{ color:#0f1115 }
+html[data-theme="light"] .hero p{ color:#494f57 }
+html[data-theme="light"] .btn{ background:#fff; color:#0f1115; border:1.5px solid #0f1115; box-shadow:none }
+html[data-theme="light"] .btn:hover{ background:#0f1115; color:#fff }
+html[data-theme="light"] .card{ background:#fff; border:1px solid var(--border); box-shadow: var(--shadow) }
+html[data-theme="light"] .exp.card::before, html[data-theme="light"] .about-card::before{ opacity:.18 }
+html[data-theme="light"] .exp.card::after, html[data-theme="light"] .about-card .grain{ opacity:.06 }
+html[data-theme="light"] .contact-list a, html[data-theme="light"] .about-links a{ color:#0f1115; font-weight:800; text-decoration:none }
+html[data-theme="light"] .contact-list a:hover, html[data-theme="light"] .about-links a:hover{ text-decoration: underline }
+html[data-theme="light"] form#contact-form input, html[data-theme="light"] form#contact-form textarea{
+  background:#fff; border:1px solid rgba(0,0,0,.12); color:#1b1c1f; box-shadow: 0 2px 6px rgba(120,90,60,.08)
+}
+html[data-theme="light"] form#contact-form input:focus, html[data-theme="light"] form#contact-form textarea:focus{
+  border-color:#0f1115; box-shadow: 0 0 0 3px rgba(15,17,21,.18)
+}
+html[data-theme="light"] .site-footer{ background:#fff; border-top:1px solid var(--border); color:var(--ink) }
+
+/* Show mosaic in light, shuffle in dark */
+html[data-theme="light"] .hero-art{ display:block }
+html:not([data-theme="light"]) .hero-shuffle{ display:block }
+
+/* ---------- DARK THEME (Brittany-style) ---------- */
+html:not([data-theme="light"]){
+  --bg:#0a192f; --bg-2:#0a192f; --card:#112240; --ink:#ccd6f6; --muted:#8892b0; --accent:#64ffda;
+  --border: rgba(100,255,218,.18); --glass: rgba(17,34,64,.65); --shadow: 0 18px 40px rgba(2,12,27,.35);
+}
+html:not([data-theme="light"]) .site-header{ background: rgba(10,25,47,.85); border-bottom: 1px solid rgba(100,255,218,.08) }
+html:not([data-theme="light"]) .nav ul{ counter-reset: nav }
+html:not([data-theme="light"]) .nav li{ counter-increment: nav }
+html:not([data-theme="light"]) .nav a{ color: var(--muted) }
+html:not([data-theme="light"]) .nav a::before{ content: "0" counter(nav) ". "; color: var(--accent); font-weight:700; margin-right:6px }
+html:not([data-theme="light"]) .nav a:hover{ color: var(--ink) }
+html:not([data-theme="light"]) .hero{ background: linear-gradient(180deg, #0b1c34 0%, #0a192f 60%, #0a192f 100%) }
+html:not([data-theme="light"]) .btn{ background: transparent; color: var(--accent); border: 1px solid var(--accent); box-shadow:none }
+html:not([data-theme="light"]) .btn:hover{ background: rgba(100,255,218,.08) }
+
+/* Tilt */
+.tilt-parallax{ transition: transform .25s ease, box-shadow .25s ease }
+@media (hover:hover){ .tilt-parallax:hover{ transform: translateY(-4px); box-shadow: 0 22px 46px rgba(0,0,0,.45) } }
+
+/* ================================
+   MONICA-STYLE HERO (both themes)
+   - smaller, bold headline
+   - centered container with equal gutters
+   - compact square panel to the right
+==================================*/
+
+/* 1) Center + contain */
+.hero{
+  padding: 48px 0 56px;                 /* comfortable vertical rhythm */
+}
+.hero-inner{
+  max-width: 1000px;                     /* Monica-scale width */
+  margin: 0 auto;                        /* center on page */
+  padding: 0 32px;                       /* equal left/right gutters */
+}
+
+/* 2) Balanced two-column grid */
+.hero-grid{
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;      /* text : panel */
+  gap: 28px;
+  align-items: center;
+}
+.hero-grid > *{ min-width: 0; }          /* prevent overflow stretching */
+
+/* 3) Typography (smaller, punchy) */
+.hero h1{
+  font-size: clamp(28px, 3.6vw, 44px);   /* <= key change */
+  line-height: 1.08;
+  letter-spacing: .01em;
+  font-weight: 900;
+  max-width: 16ch;                       /* wrap sooner like Monica */
+  margin: 0 0 12px;
+}
+.hero p{
+  font-size: clamp(14px, 1.7vw, 17px);
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 0 16px;
+}
+
+/* 4) CTA: smaller outline button */
+.hero .btn{
+  padding: 9px 14px;
+  font-weight: 800;
+  border-radius: 999px;
+}
+html[data-theme="light"] .hero .btn{
+  background:#fff; color:#0f1115; border:1.5px solid #0f1115; box-shadow:none;
+}
+html:not([data-theme="light"]) .hero .btn{
+  background: transparent; color: var(--accent); border:1.5px solid var(--accent); box-shadow:none;
+}
+
+/* 5) Right panel: compact square (photo shuffle) */
+.hero-shuffle{
+  width: 100%;
+  max-width: 320px;                      /* Monica-ish size */
+  aspect-ratio: 1 / 1;                   /* square */
+  justify-self: end;                     /* pull inward from gutter */
+  border-radius: 18px;
+}
+.hs-caption{ font-size: 11px; padding: 5px 8px; }         /* smaller chip */
+.shuffle-btn{ padding: 5px 10px; font-size: 12px; }        /* smaller button */
+
+/* 6) Consistent behavior on smaller screens */
+@media (max-width: 1100px){
+  .hero-inner{ max-width: 940px; padding: 0 24px; }
+  .hero-grid{ grid-template-columns: 1fr 0.95fr; gap: 24px; }
+  .hero-shuffle{ max-width: 300px; }
+}
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero h1{ max-width: 18ch; }
+  .hero-shuffle{
+    justify-self: center;
+    max-width: 340px;
+    margin-top: 10px;
+  }
+}
+
+/* 7) Numbered nav IN BOTH THEMES (Monica uses numbers too in your request) */
+.nav ul{ counter-reset: nav; }
+.nav li{ counter-increment: nav; }
+.nav a::before{
+  content: "0" counter(nav) ". ";
+  font-weight: 700;
+  margin-right: 6px;
+  color: var(--accent);                   /* teal in dark, ink in light */
+}
+/* make light-mode numbers black like Monica */
+html[data-theme="light"] .nav a::before{ color: var(--ink); }
+
+/* === Bigger Project Cards (full presence) === */
+.project-card,
+.photo-card {
+  min-height: 500px;        /* taller cards */
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image/preview area bigger */
+.project-card img,
+.photo-card img {
+  width: 100%;
+  height: 300px;            /* increase from 240px → 300px */
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Text area follows */
+.project-card .content,
+.photo-card .content {
+  flex: 1;
+  padding: 20px 22px;       /* more breathing room */
+  font-size: 15px;          /* slightly larger text */
+  line-height: 1.5;
+}
+
+/* Title bigger */
+.project-card h3,
+.photo-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+/* ===== Bigger preview tiles for PROJECTS & PHOTOS ===== */
+
+/* Use wider responsive columns so larger tiles still fit nicely */
+#technical-projects .grid.three,
+#photo-projects .grid.three{
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 28px !important;
+}
+
+/* Enlarge the media area in project cards */
+.project.card .project-media{
+  height: 320px !important;        /* was 16/9; this gives a bigger window */
+  aspect-ratio: auto !important;   /* ignore any previous aspect-ratio */
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg,#23324c,#181f2c);
+}
+.project.card .project-media img{
+  width: 100%; height: 100%;
+  object-fit: cover;                /* show full image nicely */
+}
+
+/* Enlarge the media area in photo cards */
+.photo.card .photo-media{
+  height: 320px !important;
+  aspect-ratio: auto !important;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg,#23324c,#181f2c);
+}
+.photo.card .photo-media img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* Optional: make the *first* project feel featured (remove if not needed) */
+/*
+#technical-projects .grid.three > .project.card:first-of-type{
+  grid-column: span 2;
+}
+*/
+
+/* ===== Make the ABOUT portrait smaller ===== */
+#about .portrait{
+  width: 100%;
+  max-width: 360px;                 /* dial this down/up to taste (320–380px) */
+  aspect-ratio: 4 / 5;              /* slimmer portrait feel */
+  margin-left: auto;                /* pulls it away from the center a bit */
+}
+#about .portrait img{
+  width: 100%; height: 100%;
+  object-fit: cover; border-radius: 14px;
+}
+
+/* Keep About columns balanced so the smaller portrait doesn't push layout */
+#about .grid.two{
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
+  align-items: start;
+  gap: 24px;
 }

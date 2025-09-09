@@ -1,121 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hiro Xiangyuan | Photography & Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hiro Xiangyuan — Photography & Data</title>
+  <meta name="description" content="Photography & data projects by Tuoyu (Hiro) Xiangyuan — UC Berkeley Data Science." />
   <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Photography & data projects by Tuoyu (Hiro) Xiangyuan — UC Berkeley Data Science.">
 </head>
 <body>
-  <!-- Header / Top Nav -->
-  <header class="site-header">
-  <div class="container header-inner">
-    <a href="#" class="brand" aria-label="Home">HIRO XIANGYUAN</a>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav" aria-label="Primary">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#technical-projects">Technical Projects</a></li>
-        <li><a href="#photo-projects">Photo Projects</a></li>
-        <li><a href="#contact">Contact Information</a></li>
-      </ul>
-    </nav>
-    <!-- Theme toggle -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">🌙 Dark</button>
-  </div>
-</header>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#" class="brand">HIRO XIANGYUAN</a>
 
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
- <section class="hero" aria-label="Hero banner">
-  <div class="hero-inner container hero-grid">
-    <!-- Left: text -->
-    <div class="hero-copy">
-      <h1>Photography & Data, thoughtfully crafted.</h1>
-      <p>Capturing moments and building systems — a portfolio of visual stories and technical work.</p>
-      <a href="#photo-projects" class="btn">View Photo Projects</a>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#technical-projects">Technical Projects</a></li>
+          <li><a href="#photo-projects">Photo Projects</a></li>
+          <li><a href="#contact">Contact Information</a></li>
+        </ul>
+      </nav>
+
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">🌙 Dark</button>
     </div>
+  </header>
 
-    <!-- Right: light-mode mosaic (already added earlier) -->
-    <div class="hero-art" id="hero-art" aria-label="Generative mosaic" title="Click to regenerate"></div>
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-label="Hero banner">
+    <div class="hero-inner container hero-grid">
+      <!-- Left: text -->
+      <div class="hero-copy">
+        <h1>Photography & Data, thoughtfully crafted.</h1>
+        <p>Capturing moments and building systems — a portfolio of visual stories and technical work.</p>
+        <a href="#photo-projects" class="btn">View Photo Projects</a>
+      </div>
 
-    <!-- Right: dark-mode photo shuffle -->
-    <figure class="hero-shuffle" id="hero-shuffle" aria-label="Featured photography" role="img">
-      <img class="hs-img hs-current" alt="" />
-      <img class="hs-img hs-next" alt="" />
-      <figcaption class="hs-caption" id="hs-caption">Click to shuffle</figcaption>
-      <button class="shuffle-btn" id="shuffle-btn" aria-describedby="hs-caption" aria-label="Shuffle photo">↻ Shuffle</button>
-    </figure>
-  </div>
-</section>
+      <!-- Right (light mode): mosaic generator -->
+      <div class="hero-art" id="hero-art" aria-label="Generative mosaic" title="Click to regenerate"></div>
 
+      <!-- Right (dark mode): photo shuffle -->
+      <figure class="hero-shuffle" id="hero-shuffle" aria-label="Featured photography" role="img">
+        <img class="hs-img hs-current" alt="" />
+        <img class="hs-img hs-next" alt="" />
+        <figcaption class="hs-caption" id="hs-caption">Click to shuffle</figcaption>
+        <button class="shuffle-btn" id="shuffle-btn" aria-describedby="hs-caption" aria-label="Shuffle photo">↻ Shuffle</button>
+      </figure>
+    </div>
+  </section>
 
   <main>
-    <!-- About -->
+    <!-- ================= ABOUT ================= -->
     <section id="about" class="section">
-  <div class="container grid two">
-    <!-- About Me card (moody, hover/tilt) -->
-    <article class="about-card card tilt-parallax" data-mood="ocean">
-      <div class="grain" aria-hidden="true"></div>
-      <header class="about-head">
-        <h2>About</h2>
-        <span class="about-tag">Data Science × Photography</span>
-      </header>
+      <div class="container grid two">
+        <!-- About card -->
+        <article class="about-card card tilt-parallax">
+          <div class="grain" aria-hidden="true"></div>
+          <header class="about-head">
+            <h2>About Me</h2>
+            <span class="about-tag">Data Science × Photography</span>
+          </header>
 
-      <p class="about-blurb">
-        UC Berkeley Data Science student focused on ML/NLP and data visualization.  
-        I build practical tools (translation, classification, analytics) and — camera in hand —
-        tell stories with light, texture, and candid moments by the beach.
-      </p>
+          <p class="about-blurb">
+            UC Berkeley Data Science student focused on ML/NLP and visualization. I build translation,
+            classification, and analytics tools — and capture stories through light, texture, and candid moments by the beach.
+          </p>
 
-      <ul class="about-badges">
-        <li>Machine Learning</li>
-        <li>NLP</li>
-        <li>Visualization</li>
-        <li>Photography</li>
-      </ul>
+          <ul class="about-badges">
+            <li>Machine Learning</li>
+            <li>NLP</li>
+            <li>Visualization</li>
+            <li>Photography</li>
+          </ul>
 
-      <ul class="inline-meta about-links">
-        <li><a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a></li>
-        <li><a href="tel:+19495579201">(949) 557-9201</a></li>
-        <li><a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">github.com/seven-ai-h</a></li>
-        <li><a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">linkedin.com/in/hiro-xiangyuan</a></li>
-      </ul>
-    </article>
+          <ul class="inline-meta about-links">
+            <li><a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a></li>
+            <li><a href="tel:+19495579201">(949) 557-9201</a></li>
+            <li><a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">github.com/seven-ai-h</a></li>
+            <li><a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">linkedin.com/in/hiro-xiangyuan</a></li>
+          </ul>
+        </article>
 
-    <!-- Portrait + Coursework (kept, but tidier card) -->
-    <aside class="about-side">
-      <div class="portrait" aria-label="Portrait of Hiro">
-        <img src="hiro-portrait.jpg" alt="Portrait of Hiro Xiangyuan at the beach during sunset" loading="lazy"/>
+        <!-- Portrait + Coursework -->
+        <aside class="about-side">
+          <div class="portrait" aria-label="Portrait of Hiro">
+            <img src="pictures/portrait.jpg" alt="Portrait of Hiro Xiangyuan at the beach during sunset" loading="lazy"/>
+          </div>
+
+          <div class="coursework card about-coursework" aria-labelledby="cw">
+            <h3 id="cw">Relevant Coursework</h3>
+            <ul>
+              <li>Data Structures &amp; Algorithms</li>
+              <li>Principles &amp; Techniques of Data Science</li>
+              <li>Computational Structures in Data Science</li>
+              <li>Probability for Data Science</li>
+            </ul>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <div class="coursework card about-coursework" aria-labelledby="cw">
-        <h3 id="cw">Relevant Coursework</h3>
-        <ul>
-          <li>Data Structures &amp; Algorithms</li>
-          <li>Principles &amp; Techniques of Data Science</li>
-          <li>Computational Structures in Data Science</li>
-          <li>Probability for Data Science</li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-</section>
-
-
-    <!-- Experience -->
+    <!-- ================= EXPERIENCE ================= -->
     <section id="experience" class="section">
       <div class="container">
         <h2>Experience</h2>
         <div class="stack">
-          <!-- Photonics — ocean mood -->
           <article class="exp card" data-mood="ocean" style="--bg-img:url('thumb-tech-3.jpg')">
-            <span class="exp-chip">PDL</span>
             <div class="grain" aria-hidden="true"></div>
-
             <div class="exp-header">
               <h3>Photonics Devices Laboratory</h3>
               <span class="muted">May. 2025 – Present • Tainan, Taiwan</span>
@@ -125,14 +121,10 @@
               <li>Modified silicon photonics simulation data using MATLAB and Lumerical to extract coupling coefficients.</li>
               <li>Automated data pipelines and parameter sweeps, boosting modeling speed by 10% and cutting manual work.</li>
             </ul>
-            <p class="exp-note">Mood: calm focus — late-night sims, early-morning plots.</p>
           </article>
 
-          <!-- TASA — palm mood -->
           <article class="exp card" data-mood="palm" style="--bg-img:url('photo-3.jpg')">
-            <span class="exp-chip">TASA</span>
             <div class="grain" aria-hidden="true"></div>
-
             <div class="exp-header">
               <h3>Taiwanese American Student Association</h3>
               <span class="muted">Jan. 2024 – Present • Berkeley, CA</span>
@@ -142,14 +134,10 @@
               <li>Improved and maintained 10+ web pages using JavaScript and HTML/CSS for layout, design, and responsiveness.</li>
               <li>Conducted monthly site audits; fixed 10+ issues including broken links and image errors via Git.</li>
             </ul>
-            <p class="exp-note">Mood: community &amp; color — events, friends, late deploys.</p>
           </article>
 
-          <!-- Codify — sunset mood -->
           <article class="exp card" data-mood="sunset" style="--bg-img:url('thumb-tech-1.jpg')">
-            <span class="exp-chip">CODIFY</span>
             <div class="grain" aria-hidden="true"></div>
-
             <div class="exp-header">
               <h3>Codify</h3>
               <span class="muted">Aug. 2023 – May. 2024 • Berkeley, CA</span>
@@ -159,14 +147,10 @@
               <li>Designed the profile page frontend in React, improving visual appeal and user experience.</li>
               <li>Integrated frontend and backend via provided API client to display dynamic data.</li>
             </ul>
-            <p class="exp-note">Mood: builder energy — standups, shipping, refactors.</p>
           </article>
 
-          <!-- AI Kowa — dawn mood -->
           <article class="exp card" data-mood="dawn" style="--bg-img:url('photo-1.jpg')">
-            <span class="exp-chip">KOWA</span>
             <div class="grain" aria-hidden="true"></div>
-
             <div class="exp-header">
               <h3>AI Kowa Trading Company</h3>
               <span class="muted">Jun. 2021 – Aug. 2022 • Montebello, CA</span>
@@ -176,20 +160,19 @@
               <li>Designed interactive Excel dashboards to analyze profit trends across grocery stores; recommended supply adjustments that helped drive a 4% profit increase.</li>
               <li>Filtered and analyzed 1,000+ customer purchase records using SQL to define shipping patterns, uncover inefficiencies, and maximize delivery efficiency, resulting in a 2% improvement in overall timing.</li>
             </ul>
-            <p class="exp-note">Mood: sunrise grind — spreadsheets, insights, small wins.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Technical Projects -->
+    <!-- ================= TECHNICAL PROJECTS ================= -->
     <section id="technical-projects" class="section">
       <div class="container">
         <h2>Technical Projects</h2>
         <div class="grid three">
           <article class="project card">
             <div class="project-media">
-              <img src="thumb-tech-1.jpg" alt="GlobalNews Translation Project preview" loading="lazy"/>
+              <img src="pictures/globalnews.jpg" alt="GlobalNews Translation Project preview" loading="lazy"/>
             </div>
             <div class="card-body">
               <h3>GlobalNews Translation Project</h3>
@@ -205,7 +188,7 @@
             <div class="card-body">
               <h3>SPAM/HAM Email Classification</h3>
               <p class="muted">Python, NLP, Scikit-learn</p>
-              <p>Preprocessed text (TF-IDF, tokenization, stopwords, punctuation), reduced noise by 40%, achieved 92.3% accuracy and F1 = 0.90 with tuned Random Forest.</p>
+              <p>Preprocessed text (TF-IDF, tokenization, stopwords, punctuation); reduced noise by 40%; achieved 92.3% accuracy and F1 = 0.90 with tuned Random Forest.</p>
             </div>
           </article>
 
@@ -223,17 +206,17 @@
       </div>
     </section>
 
-    <!-- Photo Projects -->
+    <!-- ================= PHOTO PROJECTS ================= -->
     <section id="photo-projects" class="section">
       <div class="container">
         <h2>Photo Projects</h2>
         <div class="grid three photo-grid">
           <article class="photo card">
             <div class="photo-media ratio">
-              <img src="photo-1.jpg" alt="Street photography series — night lights" loading="lazy"/>
+              <img src="pictures/jiufennosunset.jpg" alt="Street photography series — night lights at Taipei Jiufen" loading="lazy"/>
             </div>
             <div class="card-body">
-              <h3>City After Dark</h3>
+              <h3>Taipei Jiufen</h3>
               <p class="muted">Street • Low light • 2025</p>
               <p>Exploring neon, reflections, and candid motion in downtown nights.</p>
             </div>
@@ -264,7 +247,7 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- ================= CONTACT ================= -->
     <section id="contact" class="section">
       <div class="container grid two">
         <div>
@@ -277,6 +260,7 @@
             <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">linkedin.com/in/hiro-xiangyuan</a></li>
           </ul>
         </div>
+
         <form id="contact-form" class="card" aria-labelledby="contact-form-title">
           <h3 id="contact-form-title">Send a Message</h3>
           <label>
@@ -298,6 +282,7 @@
     </section>
   </main>
 
+  <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; <span id="current-year">2025</span> Tuoyu (Hiro) Xiangyuan — Photography &amp; Data</p>
