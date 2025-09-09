@@ -1,14 +1,17 @@
-# Personal Portfolio
+# 🌐 Personal Portfolio
 
-This is a personal portfolio website built with pure HTML, CSS, and JavaScript. It includes sections for About Me, Projects, Skills, and Contact.
+Welcome to my personal portfolio website — a space where I combine **Data Science**, **Web Development**, and **Photography** to tell stories through both code and visuals.  
 
-## Getting Started
-Open `index.html` in your browser to view the site.
+This portfolio is built with **pure HTML, CSS, and JavaScript**, no frameworks — lightweight, responsive, and customizable.
 
-## Features
-- Modern, responsive design
-- About Me, Projects, Skills, and Contact sections
-- No frameworks or build tools required
+---
 
-## Customization
-Edit the HTML, CSS, and JS files to update your content and style.
+## 🚀 Getting Started
+To view the site locally:
+```bash
+# clone the repo
+git clone https://github.com/<your-username>/personal-portfolio.git
+
+# open in browser
+cd personal-portfolio
+open index.html
