@@ -450,3 +450,211 @@ html[data-theme="light"] .nav a::before{ color: var(--ink); }
   align-items: start;
   gap: 24px;
 }
+
+/* ===== ABOUT — proportional + organized ===== */
+
+/* same gutters and equal-height columns */
+#about .container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  align-items: stretch;                /* stretch both columns */
+}
+
+/* left/right columns balance */
+#about .grid.two{
+  grid-template-columns: 1.05fr .95fr; /* slightly favor text */
+  gap: 24px;
+}
+
+/* ABOUT card (left) */
+#about .about-card{
+  display: grid;
+  grid-template-rows: auto 1fr auto auto; /* title, blurb, badges, links */
+  padding: 20px 22px 18px;
+  border-radius: 16px;
+}
+
+/* make the paragraph read nicely */
+#about .about-blurb{
+  max-width: 54ch;
+  margin: 6px 0 10px;
+}
+
+/* badges: compact & consistent */
+#about .about-badges{
+  display: flex; flex-wrap: wrap;
+  gap: 8px 10px; margin: 6px 0 10px; padding: 0; list-style: none;
+}
+#about .about-badges li{
+  padding: 6px 10px; border-radius: 999px;
+  font-weight: 700; font-size: 12.5px;
+  border: 1px dashed color-mix(in srgb, var(--ink) 25%, transparent);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* contact links in a neat wrap (no ragged line) */
+#about .about-links{
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 6px 14px; padding: 0; margin: 6px 0 0; list-style: none;
+}
+@media (max-width: 700px){
+  #about .about-links{ grid-template-columns: 1fr; }
+}
+
+/* RIGHT column becomes its own mini-grid */
+#about .about-side{
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 18px;
+  align-content: start;
+}
+
+/* Portrait: proportional, not oversized */
+#about .portrait{
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 4 / 5;                /* tidy portrait shape */
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0b0f18;
+}
+#about .portrait img{
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+/* Coursework card aligns with portrait width and spacing */
+#about .about-coursework{
+  padding: 18px 20px;
+  border-radius: 16px;
+}
+#about .about-coursework h3{ margin: 4px 0 10px; }
+#about .about-coursework ul{ margin: 0; padding-left: 18px; }
+#about .about-coursework li{ margin: 8px 0; }
+
+/* Small screens: stack cleanly */
+@media (max-width: 980px){
+  #about .container{ padding: 0 20px; }
+  #about .grid.two{ grid-template-columns: 1fr; }
+  #about .about-side{ grid-template-rows: auto auto; }
+  #about .portrait{ max-width: 420px; margin: 0 auto; }
+  #about .about-coursework{ max-width: 680px; margin: 0 auto; }
+}
+/* Make project/photo cards bigger */
+.project-card {
+  min-height: 480px;        /* taller cards */
+  max-width: 360px;         /* a little wider if needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+/* Image container */
+.project-card img {
+  width: 100%;
+  height: 280px;            /* bigger image block */
+  object-fit: cover;        /* keeps proportions, fills box */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+/* Contact links — white in dark mode only */
+html[data-theme="dark"] #contact .contact-list a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+html[data-theme="dark"] #contact .contact-list a:hover {
+  color: #4fd1c5 !important; /* teal accent on hover */
+  text-decoration: underline;
+}
+
+/* ===== About (hero-style second section) ===== */
+.about-hero{
+  position: relative;
+  padding: clamp(72px, 10vw, 120px) 0;
+  overflow: hidden;
+}
+
+/* optional subtle topo lines backdrop (dark & light friendly) */
+.about-hero::before{
+  content:"";
+  position:absolute; inset:-20% -10%  -10% -10%;
+  opacity: .15;
+  pointer-events:none;
+  background:
+    radial-gradient(1200px 600px at 30% 20%, transparent 60%, rgba(255,255,255,.05) 61% 62%, transparent 63%) repeat,
+    radial-gradient(1000px 500px at 70% 60%, transparent 60%, rgba(0,0,0,.06) 61% 62%, transparent 63%) repeat;
+  background-size: 580px 340px, 520px 300px;
+}
+
+/* layout */
+.about-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 6vw, 64px);
+}
+
+/* photo */
+.about-avatar{
+  flex: 0 0 auto;
+  width: clamp(190px, 28vw, 280px);
+  height: clamp(190px, 28vw, 280px);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
+  border: 6px solid rgba(255,255,255,.06);
+}
+.about-avatar img{
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+/* text */
+.about-copy{ flex: 1 1 auto; min-width: 280px; }
+.about-name{
+  margin: 0 0 8px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  line-height: 1.05;
+  font-size: clamp(28px, 5.4vw, 56px);     /* big name but smaller than hero */
+  text-wrap: balance;
+}
+.about-tagline{
+  margin: 0 0 18px;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.45;
+  opacity: .9;
+}
+.about-tagline span{ font-weight: 800; }
+
+/* links row */
+.about-links{
+  display: flex; flex-wrap: wrap; gap: 10px 14px;
+  align-items: center;
+  font-weight: 600;
+}
+.about-links a{
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color .2s ease, border-color .2s ease;
+}
+html[data-theme="dark"] .about-links a{ color: #cfe7ff; }
+html[data-theme="dark"] .about-links a:hover{
+  color: #4fd1c5; border-color: #4fd1c5;
+}
+html[data-theme="light"] .about-links a{ color: #0d141a; }
+html[data-theme="light"] .about-links a:hover{
+  color: #7a4b00; border-color: #7a4b00;
+}
+
+/* responsive stack */
+@media (max-width: 900px){
+  .about-wrap{ flex-direction: column; text-align: center; }
+  .about-links{ justify-content: center; }
+}

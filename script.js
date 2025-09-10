@@ -108,12 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Replace with your actual files
     const HERO_IMAGES = [
-      'photo-1.jpg',
-      'photo-2.jpg',
-      'photo-3.jpg',
-      'thumb-tech-1.jpg',
-      'thumb-tech-2.jpg',
-      'thumb-tech-3.jpg'
+      'pictures/seattletower.JPG',
+      'pictures/seattle wheels.JPG',
+      'pictures/ximending.JPG',
+      'pictures/shifen.jpg',
+      'pictures/trainpic.jpg',
+      'pictures/ximending2.jpg'
     ];
 
     // preload
