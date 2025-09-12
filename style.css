@@ -658,3 +658,76 @@ html[data-theme="light"] .about-links a:hover{
   .about-wrap{ flex-direction: column; text-align: center; }
   .about-links{ justify-content: center; }
 }
+.about-links {
+  margin-top: 1rem;
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.about-links a {
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  z-index: 1; /* keep above background */
+}
+
+/* Light mode */
+html[data-theme="light"] .about-links a {
+  color: #111;
+}
+html[data-theme="light"] .about-links a:hover {
+  color: #7a4b00;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .about-links a {
+  color: #fff;  /* white in dark mode */
+}
+html[data-theme="dark"] .about-links a:hover {
+  color: #4fd1c5;
+}
+/* --- Fix About links not clickable --- */
+
+/* Keep the background layers behind content */
+.about-hero { position: relative; z-index: 0; }
+.about-hero::before { z-index: -2 !important; pointer-events: none !important; }
+
+/* The portrait sometimes has a pseudo-element glow; make sure it can't block */
+.about-avatar { position: relative; z-index: 0; }
+.about-avatar::before,
+.about-avatar::after { 
+  z-index: -1 !important; 
+  pointer-events: none !important; 
+}
+
+/* Ensure text/links stack above everything */
+.about-wrap,
+.about-copy,
+.about-links { position: relative; z-index: 2; }
+
+/* Force layout to flex (in case old grid styles are lingering) */
+.about-links {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+}
+
+/* Make anchors definitely clickable */
+.about-links a {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Colors by theme */
+html[data-theme="light"] .about-links a { color: #111; }
+html[data-theme="light"] .about-links a:hover { color: #7a4b00; }
+
+html[data-theme="dark"] .about-links a { color: #fff; }
+html[data-theme="dark"] .about-links a:hover { color: #4fd1c5; }
