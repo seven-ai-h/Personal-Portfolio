@@ -21,7 +21,7 @@ if (toggle) {
   });
 }
 
-// ===== Scroll-in animations =====
+// ===== Scroll-in animations (now includes .reveal-slide) =====
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -31,22 +31,13 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.reveal-up, .reveal-fade').forEach(el => io.observe(el));
-
-// ===== Contact form (front-end only) =====
-const form = document.getElementById('contact-form');
-if (form) {
-  form.addEventListener('submit', () => {
-    alert('Thanks! This demo form is front-end only. You can wire it to Formspree or a serverless endpoint.');
-    form.reset();
-  });
-}
+document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-slide').forEach(el => io.observe(el));
 
 // ===== Year in footer =====
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
-// Project flip cards: tap/click + keyboard (mobile + accessibility)
+// ===== Project flip cards: tap/click + keyboard =====
 (function(){
   const cards = document.querySelectorAll('.project-card.flip');
 
@@ -58,12 +49,14 @@ if (y) y.textContent = new Date().getFullYear();
 
   cards.forEach(card => {
     card.setAttribute('tabindex','0');
+
+    // Toggle on click for touch/small screens only — desktop flips on hover
     card.addEventListener('click', (e) => {
-      if (e.target.closest('a')) return; // allow link clicks if you add them
-      // Only toggle on click for touch/pen devices or small screens
+      if (e.target.closest('a')) return;
       const isTouch = matchMedia('(hover: none)').matches || window.innerWidth < 980;
       if (isTouch) toggle(card);
     });
+
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(card); }
       if (e.key === 'Escape') card.classList.remove('is-flipped');
