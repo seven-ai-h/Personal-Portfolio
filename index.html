@@ -1,270 +1,386 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hiro Xiangyuan — Photography & Data</title>
-  <meta name="description" content="Photography & data projects by Tuoyu (Hiro) Xiangyuan — UC Berkeley Data Science." />
-  <link rel="stylesheet" href="style.css" />
+  <title>Hiro Xiangyuan — Data & CogSci</title>
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
-<body>
-  <!-- ================= HEADER ================= -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a href="#" class="brand">HIRO XIANGYUAN</a>
 
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+<body>
+  <!-- ========== NAV ========== -->
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#hero">HIRO</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
-
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#technical-projects">Technical Projects</a></li>
-          <li><a href="#photo-projects">Photo Projects</a></li>
-          <li><a href="#contact">Contact Information</a></li>
-        </ul>
-      </nav>
-
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">🌙 Dark</button>
-    </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="mode-toggle" id="modeToggle" aria-label="Theme">
+            <span class="sun">☀️</span><span class="moon">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero" aria-label="Hero banner">
-    <div class="hero-inner container hero-grid">
-      <!-- Left: text -->
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero section">
+    <div class="container hero-wrap">
       <div class="hero-copy">
-        <h1>Data Science & Photography</h1>
-        <p>Building systems and capturing beautiful moments — a portfolio of visual stories and technical work.</p>
-        <a href="#photo-projects" class="btn">View Photo Projects</a>
+        <h1 class="reveal-up">Hiro Xiangyuan</h1>
+        <p class="hero-sub reveal-up delay-100">
+          Data Science <span class="amp">&</span> Cognitive Science
+        </p>
+        <p class="hero-tag reveal-up delay-200">
+          I build translation systems, text classifiers, and analytics that turn
+          real-world data into decisions. Interests: NLP, ML systems, data
+          visualization, and human-centered AI.
+        </p>
+        <div class="hero-cta reveal-up delay-300">
+          <a href="#projects" class="btn">See Projects</a>
+          <a href="#experience" class="btn ghost">Work Experience</a>
+        </div>
       </div>
-
-      <!-- Right (light mode): mosaic generator -->
-      <div class="hero-art" id="hero-art" aria-label="Generative mosaic" title="Click to regenerate"></div>
-
-      <!-- Right (dark mode): photo shuffle -->
-      <figure class="hero-shuffle" id="hero-shuffle" aria-label="Featured photography" role="img">
-        <img class="hs-img hs-current" alt="" />
-        <img class="hs-img hs-next" alt="" />
-        <figcaption class="hs-caption" id="hs-caption">Click to shuffle</figcaption>
-        <button class="shuffle-btn" id="shuffle-btn" aria-describedby="hs-caption" aria-label="Shuffle photo">↻ Shuffle</button>
+      <figure class="hero-art reveal-fade delay-200">
+        <img src="pictures/portrait.jpg" alt="Portrait of Hiro" />
       </figure>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section">
+    <div class="container two-col">
+      <div class="about-col reveal-up">
+        <h2>About</h2>
+        <p>
+          UC Berkeley student (Data Science + Cognitive Science) focused on
+          machine learning, NLP, and human-centered analytics. I like shipping
+          small products that work: translation tools, spam classifiers, and
+          visual data stories.
+        </p>
+        <ul class="chip-list">
+          <li>Machine Learning</li>
+          <li>NLP</li>
+          <li>Applied Statistics</li>
+          <li>Data Visualization</li>
+          <li>Human-AI Interaction</li>
+        </ul>
+      </div>
+      <div class="about-col reveal-up delay-100">
+        <div class="about-card">
+          <h3>Currently</h3>
+          <p>
+            Building JP/ZH/EN translation (100K+ sentence pairs), spam/ham
+            classifiers (92.3% acc), and TV-show analytics (15K+ shows).
+          </p>
+          <div class="about-links">
+            <a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a>
+            <span>·</span>
+            <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">GitHub</a>
+            <span>·</span>
+            <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <main>
-  
-<section id="about" class="about-hero">
-  <div class="about-wrap">
-    <!-- Left: circular portrait -->
-    <figure class="about-avatar">
-      <img src="pictures/portrait.jpg" alt="Portrait of Hiro Xiangyuan">
-    </figure>
+ <section id="experience" class="section">
+  <div class="container">
+    <h2 class="reveal-up">Experience</h2>
 
-    <!-- Right: name + one-liner + quick links -->
-    <div class="about-copy">
-      <h1 class="about-name">HIRO XIANGYUAN</h1>
-      <p class="about-tagline">I am a <span>Data Science + Photography</span> student at UC&nbsp;Berkeley.</p>
+    <ol class="timeline">
 
-    <div class="about-links">
-    <a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a>
-    <span> · </span>
-    <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">GitHub</a>
-    <span> · </span>
-    <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">LinkedIn</a>
+      <!-- Whitney Lab -->
+      <li class="timeline-item reveal-up">
+        <div class="t-meta">
+          <span class="t-date">Sep 2025 – Present</span>
+          <span class="t-place">Berkeley, CA</span>
+        </div>
+        <div class="t-card">
+          <header>
+            <h3>Whitney Laboratory</h3>
+            <span class="t-role">Undergraduate Research Assistant</span>
+          </header>
+          <ul>
+            <li>Analyzed psychophysics & image datasets for predictive modeling of skin lesion malignancy.</li>
+            <li>Developed preprocessing/ML pipelines for model-ready data (Python, Pandas, scikit-learn).</li>
+            <li>Contributed to eye-tracking + ML experiments examining perceptual bias in clinical decisions.</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Black Unicorn -->
+      <li class="timeline-item reveal-up delay-100">
+        <div class="t-meta">
+          <span class="t-date">Sep 2025 – Present</span>
+          <span class="t-place">Remote</span>
+        </div>
+        <div class="t-card">
+          <header>
+            <h3>Black Unicorn</h3>
+            <span class="t-role">AI Data Engineer (Intern)</span>
+          </header>
+          <ul>
+            <li>Integrated Veo to generate immersive preview clips from long-form video.</li>
+            <li>Built scalable preprocessing + inference pipeline, reducing latency for client demos.</li>
+            <li>Developed internal tooling and APIs for automated content ingestion and preview delivery.</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Photonics Devices Lab -->
+      <li class="timeline-item reveal-up delay-200">
+        <div class="t-meta">
+          <span class="t-date">May 2025 – Present</span>
+          <span class="t-place">Tainan, Taiwan</span>
+        </div>
+        <div class="t-card">
+          <header>
+            <h3>Photonics Devices Laboratory</h3>
+            <span class="t-role">Undergraduate Research Assistant</span>
+          </header>
+          <ul>
+            <li>Simulated silicon-photonics devices using MATLAB & Lumerical.</li>
+            <li>Automated parameter sweeps and batch data pipelines, cutting manual work by ~10%.</li>
+            <li>Extracted coupling coefficients and summarized results for iterative design.</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- TASA -->
+      <li class="timeline-item reveal-up delay-300">
+        <div class="t-meta">
+          <span class="t-date">Jan 2024 – Present</span>
+          <span class="t-place">Berkeley, CA</span>
+        </div>
+        <div class="t-card">
+          <header>
+            <h3>Taiwanese American Student Association (TASA)</h3>
+            <span class="t-role">Webmaster Officer</span>
+          </header>
+          <ul>
+            <li>Maintained 10+ web pages; improved responsiveness, accessibility, and load time.</li>
+            <li>Resolved 10+ technical issues (broken links, styling bugs, small JS errors).</li>
+            <li>Streamlined publishing with Git version control and structured workflows.</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Codify -->
+      <li class="timeline-item reveal-up delay-400">
+        <div class="t-meta">
+          <span class="t-date">Aug 2023 – May 2024</span>
+          <span class="t-place">Berkeley, CA</span>
+        </div>
+        <div class="t-card">
+          <header>
+            <h3>Codify</h3>
+            <span class="t-role">Software Developer</span>
+          </header>
+          <ul>
+            <li>Built React-based profile page frontend, improving UI polish and UX responsiveness.</li>
+            <li>Integrated backend API to render dynamic data with smooth state handling.</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- AI Kowa -->
+      <li class="timeline-item reveal-up delay-500">
+        <div class="t-meta">
+          <span class="t-date">Jun 2021 – Aug 2022</span>
+          <span class="t-place">Montebello, CA</span>
+        </div>
+        <div class="t-card">
+          <header>
+            <h3>AI Kowa Trading Company</h3>
+            <span class="t-role">Data Analyst Intern</span>
+          </header>
+          <ul>
+            <li>Built Excel dashboards to analyze profit trends, improving supply shift decisions.</li>
+            <li>Queried 1,000+ purchase records with SQL to identify shipping inefficiencies.</li>
+            <li>Improved delivery timing by ~2% through data-driven recommendations.</li>
+          </ul>
+        </div>
+      </li>
+
+    </ol>
   </div>
+</section>
 
+
+
+<!-- ================== PROJECTS ================== -->
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="reveal-up">Projects</h2>
+
+    <div class="projects-grid">
+      <!-- GlobalNews Translation -->
+      <article class="project-card flip reveal-fade">
+        <div class="flip-inner">
+          <!-- FRONT -->
+          <div class="flip-front">
+            <div class="proj-media">
+              <img src="pictures/globalnews.jpg" alt="GlobalNews Translation preview">
+            </div>
+            <div class="proj-body">
+              <h3>GlobalNews Translation</h3>
+              <div class="stack">
+                <span>Python</span><span>Flask</span><span>seq2seq</span><span>REST</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK -->
+          <div class="flip-back">
+            <div class="proj-body back">
+              <h3>GlobalNews Translation</h3>
+              <ul class="bullets">
+                <li>Built a JP/ZH/EN translation app using a seq2seq model (~85% val accuracy) with a latency-aware Flask API.</li>
+                <li>Cleaned and tokenized ~100K bilingual pairs; added error analysis + evaluation dashboard for model iteration.</li>
+                <li>Published REST endpoints and integrated a simple UI for real-time translation.</li>
+              </ul>
+              <div class="links">
+                <!-- Optional -->
+                <!-- <a href="#" class="btn-ghost">GitHub</a>
+                <a href="#" class="btn-ghost">Demo</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Spam/Ham Email Classification -->
+      <article class="project-card flip reveal-fade delay-50">
+        <div class="flip-inner">
+          <!-- FRONT -->
+          <div class="flip-front">
+            <div class="proj-media">
+              <img src="pictures/spam-ham.png" alt="Spam/Ham classifier preview">
+            </div>
+            <div class="proj-body">
+              <h3>Spam/Ham Email Classification</h3>
+              <div class="stack">
+                <span>Python</span><span>NLP</span><span>scikit-learn</span><span>TF-IDF</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK -->
+          <div class="flip-back">
+            <div class="proj-body back">
+              <h3>Spam/Ham Email Classification</h3>
+              <ul class="bullets">
+                <li>Preprocessed dataset (tokenization, punctuation/stopword removal, TF-IDF features).</li>
+                <li>Trained/tuned Random Forest; achieved 92.3% accuracy and balanced F1=0.90.</li>
+                <li>Built confusion matrix and error buckets to guide next-step improvements.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Television Data Analytics -->
+      <article class="project-card flip reveal-fade delay-100">
+        <div class="flip-inner">
+          <!-- FRONT -->
+          <div class="flip-front">
+            <div class="proj-media">
+              <img src="pictures/tv-analytics.jpg" alt="Television data analytics preview">
+            </div>
+            <div class="proj-body">
+              <h3>Television Data Analytics</h3>
+              <div class="stack">
+                <span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Seaborn</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK -->
+          <div class="flip-back">
+            <div class="proj-body back">
+              <h3>Television Data Analytics</h3>
+              <ul class="bullets">
+                <li>Engineered features from 15K+ shows; built 10+ visualizations to reveal trend drivers.</li>
+                <li>Trained predictive models for popularity with 86% accuracy; evaluated with holdout set.</li>
+                <li>Packaged notebooks into a lightweight report pipeline for stakeholders.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 
-    <!-- ================= EXPERIENCE ================= -->
-    <section id="experience" class="section">
-      <div class="container">
-        <h2>Experience</h2>
-        <div class="stack">
-          <article class="exp card" data-mood="ocean" style="--bg-img:url('thumb-tech-3.jpg')">
-            <div class="grain" aria-hidden="true"></div>
-            <div class="exp-header">
-              <h3>Photonics Devices Laboratory</h3>
-              <span class="muted">May. 2025 – Present • Tainan, Taiwan</span>
-            </div>
-            <p class="role">Undergraduate Research Assistant</p>
-            <ul>
-              <li>Modified silicon photonics simulation data using MATLAB and Lumerical to extract coupling coefficients.</li>
-              <li>Automated data pipelines and parameter sweeps, boosting modeling speed by 10% and cutting manual work.</li>
-            </ul>
-          </article>
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="reveal-up">Skills & Tools</h2>
+      <ul class="skills-grid reveal-up delay-100">
+        <li><strong>Python</strong> — pandas, NumPy, scikit-learn</li>
+        <li><strong>NLP</strong> — tokenization, TF-IDF, seq2seq basics</li>
+        <li><strong>ML</strong> — model training, evaluation, tuning</li>
+        <li><strong>SQL</strong> — queries, joins, analysis</li>
+        <li><strong>Data Viz</strong> — Matplotlib, dashboards</li>
+        <li><strong>APIs</strong> — Flask, REST, JSON</li>
+        <li><strong>Versioning</strong> — Git/GitHub, CI basics</li>
+        <li><strong>UX</strong> — human-centered thinking (CogSci)</li>
+      </ul>
+    </div>
+  </section>
 
-          <article class="exp card" data-mood="palm" style="--bg-img:url('photo-3.jpg')">
-            <div class="grain" aria-hidden="true"></div>
-            <div class="exp-header">
-              <h3>Taiwanese American Student Association</h3>
-              <span class="muted">Jan. 2024 – Present • Berkeley, CA</span>
-            </div>
-            <p class="role">Webmaster Officer</p>
-            <ul>
-              <li>Improved and maintained 10+ web pages using JavaScript and HTML/CSS for layout, design, and responsiveness.</li>
-              <li>Conducted monthly site audits; fixed 10+ issues including broken links and image errors via Git.</li>
-            </ul>
-          </article>
+  <!-- (Optional) PHOTO section kept but hidden by CSS so you don’t lose it -->
+  <section id="photos" class="section photo-hidden">
+    <div class="container">
+      <h2>Photo Projects</h2>
+      <p>Photography content temporarily hidden while the site focuses on technical work.</p>
+    </div>
+  </section>
 
-          <article class="exp card" data-mood="sunset" style="--bg-img:url('thumb-tech-1.jpg')">
-            <div class="grain" aria-hidden="true"></div>
-            <div class="exp-header">
-              <h3>Codify</h3>
-              <span class="muted">Aug. 2023 – May. 2024 • Berkeley, CA</span>
-            </div>
-            <p class="role">Software Developer</p>
-            <ul>
-              <li>Designed the profile page frontend in React, improving visual appeal and user experience.</li>
-              <li>Integrated frontend and backend via provided API client to display dynamic data.</li>
-            </ul>
-          </article>
-
-          <article class="exp card" data-mood="dawn" style="--bg-img:url('photo-1.jpg')">
-            <div class="grain" aria-hidden="true"></div>
-            <div class="exp-header">
-              <h3>AI Kowa Trading Company</h3>
-              <span class="muted">Jun. 2021 – Aug. 2022 • Montebello, CA</span>
-            </div>
-            <p class="role">Data Analyst Intern</p>
-            <ul>
-              <li>Designed interactive Excel dashboards to analyze profit trends across grocery stores; recommended supply adjustments that helped drive a 4% profit increase.</li>
-              <li>Filtered and analyzed 1,000+ customer purchase records using SQL to define shipping patterns, uncover inefficiencies, and maximize delivery efficiency, resulting in a 2% improvement in overall timing.</li>
-            </ul>
-          </article>
-        </div>
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section">
+    <div class="container contact-wrap">
+      <div class="contact-left reveal-up">
+        <h2>Contact</h2>
+        <p>Open to internships, research, or collaboration.</p>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> <a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+19495579201">(949) 557-9201</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">github.com/seven-ai-h</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">linkedin.com/in/hiro-xiangyuan</a></li>
+        </ul>
       </div>
-    </section>
 
-    <!-- ================= TECHNICAL PROJECTS ================= -->
-    <section id="technical-projects" class="section">
-      <div class="container">
-        <h2>Technical Projects</h2>
-        <div class="grid three">
-          <article class="project card">
-            <div class="project-media">
-              <img src="pictures/globalnews.jpg" alt="GlobalNews Translation Project preview" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>GlobalNews Translation Project</h3>
-              <p class="muted">Python, JavaScript, Flask, NLP, Machine Learning</p>
-              <p>Built a full-stack translation app (JP/ZH/EN) using a seq2seq model (~85% validation accuracy); cleaned 100K+ bilingual pairs; RESTful APIs for real-time translation.</p>
-            </div>
-          </article>
+      <form id="contact-form" class="contact-form reveal-up delay-100" onsubmit="return false;">
+        <h3>Send a Message</h3>
+        <label><span class="sr-only">Name</span><input type="text" name="name" placeholder="Your name" required /></label>
+        <label><span class="sr-only">Email</span><input type="email" name="email" placeholder="Your email" required /></label>
+        <label><span class="sr-only">Message</span><textarea name="message" placeholder="Your message" rows="5" required></textarea></label>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
+    <div class="container tiny-note">
+      <small>Prefer photos? See <a href="#photos">Photography</a> (temporarily hidden).</small>
+    </div>
+  </section>
 
-          <article class="project card">
-            <div class="project-media">
-              <img src="pictures/spam-ham.png" alt="Spam/Ham email classification preview" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>SPAM/HAM Email Classification</h3>
-              <p class="muted">Python, NLP, Scikit-learn</p>
-              <p>Preprocessed text (TF-IDF, tokenization, stopwords, punctuation); reduced noise by 40%; achieved 92.3% accuracy and F1 = 0.90 with tuned Random Forest.</p>
-            </div>
-          </article>
-
-          <article class="project card">
-            <div class="project-media">
-              <img src="pictures/tv.png" alt="Television data analytics preview" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>Television Data Analytics</h3>
-              <p class="muted">Python, Pandas, Matplotlib, Seaborn, ML</p>
-              <p>Engineered features from 15K+ shows; built 10+ visualizations; trained models to predict popularity with 86% accuracy.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= PHOTO PROJECTS ================= -->
-    <section id="photo-projects" class="section">
-      <div class="container">
-        <h2>Photo Projects</h2>
-        <div class="grid three photo-grid">
-          <article class="photo card">
-            <div class="photo-media ratio">
-              <img src="pictures/jiufennosunset.jpg" alt="Street photography series — night lights at Taipei Jiufen" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>Taipei Jiufen</h3>
-              <p class="muted">Street • Low light • 2025</p>
-              <p>Exploring neon, reflections, and candid motion in taipei nights.</p>
-            </div>
-          </article>
-
-          <article class="photo card">
-            <div class="photo-media ratio">
-              <img src="pictures/sakuraberk.jpg" alt="Spring Season at UC Berkeley" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>Cherry Blossom At UC Berkeley</h3>
-              <p class="muted">Community • 2025</p>
-              <p>Soft, white cherry blossoms surround the campus of UC Berkeley</p>
-            </div>
-          </article>
-
-          <article class="photo card">
-            <div class="photo-media ratio">
-              <img src="pictures/chenggong.JPG" alt="Documentary set — community moments" loading="lazy"/>
-            </div>
-            <div class="card-body">
-              <h3>College Moments</h3>
-              <p class="muted">Community • 2025</p>
-              <p>A cute moment at ChengGong University, Taipei. Sun shines through trees and grass, so green and beautiful</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-    <section id="contact" class="section">
-      <div class="container grid two">
-        <div>
-          <h2>Contact Information</h2>
-          <p>For collaborations, shoots, or data/engineering work, reach out anytime.</p>
-          <ul class="contact-list">
-            <li><strong>Email:</strong> <a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a></li>
-            <li><strong>Phone:</strong> <a href="tel:+19495579201">(949) 557-9201</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">github.com/seven-ai-h</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">linkedin.com/in/hiro-xiangyuan</a></li>
-          </ul>
-        </div>
-
-        <form id="contact-form" class="card" aria-labelledby="contact-form-title">
-          <h3 id="contact-form-title">Send a Message</h3>
-          <label>
-            <span class="sr-only">Name</span>
-            <input type="text" name="name" placeholder="Your name" required/>
-          </label>
-          <label>
-            <span class="sr-only">Email</span>
-            <input type="email" name="email" placeholder="Your email" required/>
-          </label>
-          <label>
-            <span class="sr-only">Message</span>
-            <textarea name="message" rows="5" placeholder="Your message" required></textarea>
-          </label>
-          <button type="submit" class="btn">Send</button>
-          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="current-year">2025</span> Tuoyu (Hiro) Xiangyuan — Photography &amp; Data</p>
+    <div class="container">
+      <small>© <span id="year"></span> Tuoyu (Hiro) Xiangyuan — Data & CogSci</small>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
