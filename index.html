@@ -1,370 +1,517 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hiro Xiangyuan — Data & CogSci</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hiro Xiangyuan — Data Engineer & Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- ========== NAV ========== -->
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="#hero">HX</a>
-      <button class="nav-burger" id="navBurger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <button class="mode-toggle" id="modeToggle" aria-label="Theme">
-            <span class="sun">☀️</span><span class="moon">🌙</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- ========== HERO ========== -->
-  <section id="hero" class="hero section">
-    <div class="container hero-wrap">
-      <figure class="hero-art reveal-fade delay-200">
-        <img src="pictures/portrait.jpg" alt="Portrait of Hiro" />
-      </figure>
-      <div class="hero-copy">
-        <h1 class="reveal-up">Hi I'm Hiro!</h1>
-        <p class="hero-tag reveal-up delay-200">
-          I'm a Data Science and Cognitive Science major at UC Berkeley interested in data engineering, 
-          software engineering, as well as diving into machine learning. Open to have fun in life.
-        </p>
-        <div class="hero-cta reveal-up delay-300">
-          <a href="#contact" class="btn">Contact Me</a>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">[</span>HX<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon sun">&#9728;</span>
+          <span class="theme-icon moon">&#9685;</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-tag reveal-up">
+        <span class="tag-dot"></span>
+        Open to opportunities
+      </div>
+      <h1 class="hero-name reveal-up">
+        <span class="name-line">Hiro</span>
+        <span class="name-line accent">Xiangyuan</span>
+      </h1>
+      <div class="hero-typewriter reveal-up">
+        <span class="tw-static">I build </span>
+        <span class="tw-dynamic" id="typewriter"></span>
+        <span class="tw-cursor">|</span>
+      </div>
+      <p class="hero-sub reveal-up">
+        Data Science @ UC Berkeley &nbsp;&middot;&nbsp; Software Engineer &nbsp;&middot;&nbsp; Data Engineer<br />
+        Building systems that scale &mdash; from ETL pipelines to ML models.
+      </p>
+      <div class="hero-cta reveal-up">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-langs reveal-up">
+        <span class="lang-chip">English</span>
+        <span class="lang-chip">&#20013;&#25991;</span>
+        <span class="lang-chip">&#26085;&#26412;&#35486;</span>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">01 / About</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <p class="about-lead">
+            I'm a Data Science student at <strong>UC Berkeley</strong>, passionate about building real-world data systems and software products that make a measurable impact.
+          </p>
+          <p>
+            From engineering ETL pipelines processing <strong>500K+ records</strong> at AWS-backed startups, to training multilingual NLP models, to building workflow automation engines &mdash; I thrive at the intersection of data engineering, machine learning, and software development.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new frameworks, contributing to research at the Whitney Laboratory, or diving deep into distributed systems.
+          </p>
+          <div class="about-info-grid">
+            <div class="info-item">
+              <span class="info-label">Education</span>
+              <span class="info-value">UC Berkeley</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Major</span>
+              <span class="info-value">B.S. Data Science</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Status</span>
+              <span class="info-value status-open">Open to Work</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Location</span>
+              <span class="info-value">Berkeley, CA</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-stats reveal-right">
+          <div class="stat-card glass-card">
+            <span class="stat-number counter" data-target="5">0</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat-card glass-card">
+            <div class="stat-row">
+              <span class="stat-number counter" data-target="500">0</span>
+              <span class="stat-suffix">K+</span>
+            </div>
+            <span class="stat-label">Records Processed</span>
+          </div>
+          <div class="stat-card glass-card">
+            <div class="stat-row">
+              <span class="stat-number counter" data-target="95">0</span>
+              <span class="stat-suffix">%</span>
+            </div>
+            <span class="stat-label">Data Quality Achieved</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-number counter" data-target="3">0</span>
+            <span class="stat-label">Languages Spoken</span>
+          </div>
+          <div class="coursework-card glass-card">
+            <h4>Relevant Coursework</h4>
+            <div class="course-tags">
+              <span class="course-tag">Data Structures &amp; Algorithms</span>
+              <span class="course-tag">Principles of Data Science</span>
+              <span class="course-tag">Probability for Data Science</span>
+              <span class="course-tag">Computational Structures</span>
+              <span class="course-tag">Deep Learning</span>
+              <span class="course-tag">Linear Algebra</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="hero-bg"></div>
   </section>
 
-  <!-- ========== ABOUT (3 columns) ========== -->
-  <section id="about" class="section">
+  <!-- Skills Section -->
+  <section class="section skills" id="skills">
     <div class="container">
-      <h2 class="reveal-up">About Me.</h2>
-
-      <div class="about-3 reveal-slide delay-100">
-        <!-- Education -->
-        <article class="about-card">
-          <div class="about-icon">
-            <!-- mortarboard -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3 1 8l11 5 9-4.09V17h2V8L12 3zM3 13v4.5c0 .83 4.03 2.5 9 2.5s9-1.67 9-2.5V13l-9 4-9-4z"/>
-            </svg>
+      <div class="section-header reveal-up">
+        <span class="section-label">02 / Skills</span>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category glass-card reveal-up">
+          <div class="skill-cat-icon">&#9000;</div>
+          <h3>Languages</h3>
+          <div class="skill-pills">
+            <span class="pill">Python</span>
+            <span class="pill">SQL</span>
+            <span class="pill">Java</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">HTML/CSS</span>
           </div>
-          <h3>Education</h3>
-          <p>
-            I’m a UC Berkeley student studying Data Science and
-            Cognitive Science. I enjoy building real systems that ship:
-            translation tools, spam classifiers, and data products that help people decide.
-          </p>
-        </article>
-
-        <!-- Interests -->
-        <article class="about-card">
-          <div class="about-icon">
-            <!-- chart -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 3h2v18H3V3zm16 7h2v11h-2V10zM7 13h2v8H7v-8zm8-6h2v14h-2V7z"/>
-            </svg>
+        </div>
+        <div class="skill-category glass-card reveal-up" style="--delay: 0.1s">
+          <div class="skill-cat-icon">&#9729;</div>
+          <h3>Cloud &amp; Data</h3>
+          <div class="skill-pills">
+            <span class="pill pill-cloud">AWS Lambda</span>
+            <span class="pill pill-cloud">AWS RDS</span>
+            <span class="pill pill-cloud">S3</span>
+            <span class="pill pill-cloud">EventBridge</span>
+            <span class="pill pill-cloud">CloudWatch</span>
+            <span class="pill pill-cloud">QuickSight</span>
+            <span class="pill pill-cloud">PostgreSQL</span>
+            <span class="pill pill-cloud">MongoDB</span>
+            <span class="pill pill-cloud">DynamoDB</span>
           </div>
-          <h3>Interests</h3>
-          <p>
-            Professionally, I’m interested in data engineering, software engineering, and machine learning. Love building models and tools that can make people's lives easier.
-            I also like to solve practical problems and learn new things.
-          </p>
-        </article>
-
-        <!-- Coursework -->
-        <article class="about-card">
-          <div class="about-icon">
-            <!-- document -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM13 9V3.5L18.5 9H13z"/>
-            </svg>
+        </div>
+        <div class="skill-category glass-card reveal-up" style="--delay: 0.2s">
+          <div class="skill-cat-icon">&#9881;</div>
+          <h3>Frameworks &amp; Tools</h3>
+          <div class="skill-pills">
+            <span class="pill pill-tool">Django</span>
+            <span class="pill pill-tool">Flask</span>
+            <span class="pill pill-tool">Apache Airflow</span>
+            <span class="pill pill-tool">Pandas</span>
+            <span class="pill pill-tool">NumPy</span>
+            <span class="pill pill-tool">scikit-learn</span>
+            <span class="pill pill-tool">REST APIs</span>
+            <span class="pill pill-tool">Git</span>
+            <span class="pill pill-tool">CI/CD</span>
           </div>
-          <h3>Coursework</h3>
-          <ul class="course-list">
-            <li>CS 61B: Data Structures & Algorithms</li>
-            <li>DATA 100:Databases and Machine Learning</li>
-            <li>CS 61A: Structure and Interpretation of Computer Programs</li>
-            <li>Data 140: Probability for Data Science</li>
-            <li>DATA 102: Computational Structures in Data Science</li>
-          </ul>
-        </article>
+        </div>
+        <div class="skill-category glass-card reveal-up" style="--delay: 0.3s">
+          <div class="skill-cat-icon">&#129504;</div>
+          <h3>Specializations</h3>
+          <div class="skill-pills">
+            <span class="pill pill-spec">NLP</span>
+            <span class="pill pill-spec">ETL Pipelines</span>
+            <span class="pill pill-spec">Data Engineering</span>
+            <span class="pill pill-spec">ML Modeling</span>
+            <span class="pill pill-spec">Seq2Seq</span>
+            <span class="pill pill-spec">System Design</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== EXPERIENCE (unchanged layout; text updated previously) ========== -->
-  <section id="experience" class="section">
+  <!-- Experience Section -->
+  <section class="section experience" id="experience">
     <div class="container">
-      <h2 class="reveal-up">Experience</h2>
+      <div class="section-header reveal-up">
+        <span class="section-label">03 / Experience</span>
+        <h2 class="section-title">Where I've Worked</h2>
+      </div>
+      <div class="timeline">
 
-      <ol class="timeline">
-        <!-- Whitney Lab -->
-        <li class="timeline-item reveal-up">
-          <div class="t-meta">
-            <span class="t-date">Sep 2025 – Present</span>
-            <span class="t-place">Berkeley, CA</span>
+        <!-- Credo -->
+        <div class="timeline-item reveal-left">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
           </div>
-          <div class="t-card">
-            <header>
-              <h3>Whitney Laboratory</h3>
-              <span class="t-role">Undergraduate Research Assistant</span>
-            </header>
-            <ul>
-              <li>Analyzed psychophysics & image datasets for predictive modeling of skin lesion malignancy.</li>
-              <li>Built preprocessing/ML pipelines for model-ready data (Python, Pandas, scikit-learn).</li>
-              <li>Supported eye-tracking + ML experiments on perceptual bias in clinical decisions.</li>
+          <div class="timeline-card glass-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-company">Credo</h3>
+                <p class="tc-role">Software Engineering Intern</p>
+              </div>
+              <div class="tc-meta">
+                <span class="tc-date">May 2026 &ndash; Present</span>
+                <span class="tc-badge current">Current</span>
+              </div>
+            </div>
+            <ul class="tc-bullets">
+              <li>Implementing Python workflow automation engine using OOP and state machine architecture with 6 node types, coordinating cross-department processes for faster product launches</li>
+              <li>Building Django web application with MongoDB and MongoEngine to store workflow definitions, process instances, and audit logs</li>
             </ul>
+            <div class="tc-tags">
+              <span>Python</span><span>Django</span><span>MongoDB</span><span>State Machines</span>
+            </div>
           </div>
-        </li>
+        </div>
 
-        <!-- Black Unicorn -->
-        <li class="timeline-item reveal-up delay-100">
-          <div class="t-meta">
-            <span class="t-date">Sep 2025 – Present</span>
-            <span class="t-place">Remote</span>
+        <!-- Lamu -->
+        <div class="timeline-item reveal-right">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
           </div>
-          <div class="t-card">
-            <header>
-              <h3>Black Unicorn</h3>
-              <span class="t-role">AI Data Engineer (Intern)</span>
-            </header>
-            <ul>
-              <li>Integrated Veo to generate immersive preview clips from long-form video.</li>
-              <li>Built a preprocessing + inference pipeline to reduce demo latency.</li>
-              <li>Delivered internal APIs/tools for automated content ingestion & exports.</li>
+          <div class="timeline-card glass-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-company">Lamu</h3>
+                <p class="tc-role">Data Engineer Intern</p>
+              </div>
+              <div class="tc-meta">
+                <span class="tc-date">Jan 2026 &ndash; May 2026</span>
+              </div>
+            </div>
+            <ul class="tc-bullets">
+              <li>Designed AWS analytics platform (Lambda, RDS PostgreSQL, QuickSight) tracking <strong>15+ KPIs</strong> and automating daily reports for user demographic analysis</li>
+              <li>Engineered ETL pipeline processing <strong>500K+ user records</strong> from DynamoDB to PostgreSQL with SQL cohort retention queries</li>
             </ul>
+            <div class="tc-tags">
+              <span>AWS</span><span>PostgreSQL</span><span>ETL</span><span>QuickSight</span><span>DynamoDB</span>
+            </div>
           </div>
-        </li>
+        </div>
 
-        <!-- Photonics Devices Lab -->
-        <li class="timeline-item reveal-up delay-200">
-          <div class="t-meta">
-            <span class="t-date">May 2025 – Present</span>
-            <span class="t-place">Tainan, Taiwan</span>
+        <!-- Whitney Laboratory -->
+        <div class="timeline-item reveal-left">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
           </div>
-          <div class="t-card">
-            <header>
-              <h3>Photonics Devices Laboratory</h3>
-              <span class="t-role">Undergraduate Research Assistant</span>
-            </header>
-            <ul>
-              <li>Simulated silicon-photonics devices with MATLAB & Lumerical.</li>
-              <li>Automated parameter sweeps & pipelines, cutting manual work by ~10%.</li>
-              <li>Extracted coupling coefficients and summarized results for iterations.</li>
+          <div class="timeline-card glass-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-company">Whitney Laboratory</h3>
+                <p class="tc-role">Undergraduate Research Assistant &middot; UC Berkeley</p>
+              </div>
+              <div class="tc-meta">
+                <span class="tc-date">Sep 2025 &ndash; Present</span>
+                <span class="tc-badge current">Current</span>
+              </div>
+            </div>
+            <ul class="tc-bullets">
+              <li>Built automated preprocessing pipeline for <strong>200+ participants</strong> across 1,000+ trials using z-score normalization, reducing inter-subject variability by <strong>67%</strong></li>
+              <li>Developed linear regression analysis (R&#178;=0.43, p&lt;0.001) across 3,000+ trials, revealing 23% higher task performance during high-attention periods</li>
             </ul>
+            <div class="tc-tags">
+              <span>Python</span><span>Pandas</span><span>Statistics</span><span>ML</span>
+            </div>
           </div>
-        </li>
+        </div>
 
-        <!-- TASA -->
-        <li class="timeline-item reveal-up delay-300">
-          <div class="t-meta">
-            <span class="t-date">Jan 2024 – Present</span>
-            <span class="t-place">Berkeley, CA</span>
+        <!-- BLCK UNICRN -->
+        <div class="timeline-item reveal-right">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
           </div>
-          <div class="t-card">
-            <header>
-              <h3>Taiwanese American Student Association (TASA)</h3>
-              <span class="t-role">Webmaster Officer</span>
-            </header>
-            <ul>
-              <li>Maintained 10+ pages; improved responsiveness and accessibility.</li>
-              <li>Resolved 10+ issues (broken links, styling bugs, small JS errors).</li>
-              <li>Streamlined publishing with Git and repeatable workflows.</li>
+          <div class="timeline-card glass-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-company">BLCK UNICRN</h3>
+                <p class="tc-role">Software Engineer Intern</p>
+              </div>
+              <div class="tc-meta">
+                <span class="tc-date">Sep 2025 &ndash; Dec 2025</span>
+              </div>
+            </div>
+            <ul class="tc-bullets">
+              <li>Built Python ETL pipelines processing <strong>50,000+ prompt-response pairs</strong>, achieving <strong>95% data quality</strong> via automated validation</li>
+              <li>Engineered validation framework with 12+ automated checks reducing dataset errors by <strong>78%</strong></li>
+              <li>Designed MCP configuration architecture across 8 prompt categories, improving response consistency by <strong>45%</strong></li>
             </ul>
+            <div class="tc-tags">
+              <span>Python</span><span>ETL</span><span>NLP</span><span>JSON Schema</span>
+            </div>
           </div>
-        </li>
+        </div>
 
         <!-- Codify -->
-        <li class="timeline-item reveal-up delay-400">
-          <div class="t-meta">
-            <span class="t-date">Aug 2023 – May 2024</span>
-            <span class="t-place">Berkeley, CA</span>
+        <div class="timeline-item reveal-left">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
           </div>
-          <div class="t-card">
-            <header>
-              <h3>Codify</h3>
-              <span class="t-role">Software Developer</span>
-            </header>
-            <ul>
-              <li>Built React-based profile frontend; improved UI polish and UX responsiveness.</li>
-              <li>Integrated backend API and state handling for dynamic data.</li>
+          <div class="timeline-card glass-card">
+            <div class="tc-header">
+              <div>
+                <h3 class="tc-company">Codify</h3>
+                <p class="tc-role">Software Developer</p>
+              </div>
+              <div class="tc-meta">
+                <span class="tc-date">Sep 2023 &ndash; Sep 2024</span>
+              </div>
+            </div>
+            <ul class="tc-bullets">
+              <li>Optimized Intuit homepage by removing 15+ unused script dependencies, reducing page load from <strong>~10s to ~5s</strong></li>
+              <li>Delivered frontend for <strong>3 enterprise client projects</strong> including Intuit, writing 2,000+ lines of production HTML/CSS/JavaScript</li>
             </ul>
+            <div class="tc-tags">
+              <span>JavaScript</span><span>HTML/CSS</span><span>Performance</span><span>React</span>
+            </div>
           </div>
-        </li>
+        </div>
 
-        <!-- AI Kowa -->
-        <li class="timeline-item reveal-up delay-500">
-          <div class="t-meta">
-            <span class="t-date">Jun 2021 – Aug 2022</span>
-            <span class="t-place">Montebello, CA</span>
-          </div>
-          <div class="t-card">
-            <header>
-              <h3>AI Kowa Trading Company</h3>
-              <span class="t-role">Data Analyst Intern</span>
-            </header>
-            <ul>
-              <li>Built Excel dashboards for profit trends, improving supply shift decisions.</li>
-              <li>Queried 1,000+ purchase records to identify timing inefficiencies.</li>
-              <li>Improved delivery timing by ~2% via data-driven recommendations.</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
+      </div>
     </div>
   </section>
 
-  <!-- ========== PROJECTS (flip cards) ========== -->
-  <section id="projects" class="section">
+  <!-- Projects Section -->
+  <section class="section projects" id="projects">
     <div class="container">
-      <h2 class="reveal-up">Projects</h2>
-
+      <div class="section-header reveal-up">
+        <span class="section-label">04 / Projects</span>
+        <h2 class="section-title">Things I've Built</h2>
+      </div>
       <div class="projects-grid">
+
+        <!-- TrendFlow -->
+        <div class="project-card glass-card reveal-up" data-tilt>
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon">&#128200;</div>
+            <div class="project-links">
+              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-name">TrendFlow</h3>
+          <p class="project-desc">Real-time trend detection system processing <strong>10,000+ social media posts/hour</strong> from Reddit, Twitter, and NewsAPI. Predicts viral trends <strong>24-48 hours</strong> before they peak.</p>
+          <ul class="project-highlights">
+            <li>DB performance: 8s &rarr; <strong>&lt;1s</strong> via normalized schema &amp; indexing</li>
+            <li><strong>99.5% uptime</strong> with automated failover &amp; monitoring</li>
+            <li>AWS Lambda + EventBridge event-driven architecture</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>PostgreSQL</span><span>Apache Airflow</span><span>NLP</span><span>Streamlit</span><span>AWS</span>
+          </div>
+        </div>
+
         <!-- GlobalNews Translation -->
-        <article class="project-card flip reveal-slide">
-          <div class="flip-inner">
-            <!-- FRONT -->
-            <div class="flip-front">
-              <div class="proj-media">
-                <img src="pictures/globalnews.jpg" alt="GlobalNews Translation preview">
-              </div>
-              <div class="proj-body">
-                <h3>GlobalNews Translation</h3>
-                <div class="stack">
-                  <span>Python</span><span>Flask</span><span>seq2seq</span><span>REST</span>
-                </div>
-              </div>
-            </div>
-            <!-- BACK -->
-            <div class="flip-back">
-              <div class="proj-body back">
-                <h3>GlobalNews Translation</h3>
-                <ul class="bullets">
-                  <li>JP/ZH/EN translation app using seq2seq (~85% val acc) + Flask API.</li>
-                  <li>Cleaned/tokenized ~100K pairs; error analysis & iteration dashboard.</li>
-                  <li>REST endpoints + simple UI for real-time translation.</li>
-                </ul>
-              </div>
+        <div class="project-card glass-card reveal-up" data-tilt style="--delay: 0.15s">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon">&#127760;</div>
+            <div class="project-links">
+              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
             </div>
           </div>
-        </article>
+          <h3 class="project-name">GlobalNews Translation</h3>
+          <p class="project-desc">Multilingual seq2seq translation model for Japanese-Chinese-English achieving <strong>85% validation accuracy</strong> on 100,000+ sentence pairs.</p>
+          <ul class="project-highlights">
+            <li>Flask REST API with <strong>&lt;200ms</strong> translation latency</li>
+            <li>Dataset quality improved <strong>40%</strong> via systematic NLP filtering</li>
+            <li>3 language combinations: JP &#8596; ZH &#8596; EN</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>Flask</span><span>Seq2Seq</span><span>NLP</span><span>Pandas</span><span>JavaScript</span>
+          </div>
+        </div>
 
-        <!-- Spam/Ham -->
-        <article class="project-card flip reveal-slide delay-100">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <div class="proj-media">
-                <img src="pictures/spam-ham.png" alt="Spam/Ham classifier preview">
-              </div>
-              <div class="proj-body">
-                <h3>Spam/Ham Email Classification</h3>
-                <div class="stack">
-                  <span>Python</span><span>NLP</span><span>scikit-learn</span><span>TF-IDF</span>
-                </div>
-              </div>
-            </div>
-            <div class="flip-back">
-              <div class="proj-body back">
-                <h3>Spam/Ham Email Classification</h3>
-                <ul class="bullets">
-                  <li>Tokenization, punctuation/stopword removal, TF-IDF features.</li>
-                  <li>Random Forest: 92.3% accuracy, F1 = 0.90.</li>
-                  <li>Confusion matrix & error buckets for improvements.</li>
-                </ul>
-              </div>
+        <!-- Spam Classifier -->
+        <div class="project-card glass-card reveal-up" data-tilt style="--delay: 0.3s">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon">&#128140;</div>
+            <div class="project-links">
+              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
             </div>
           </div>
-        </article>
+          <h3 class="project-name">Spam/Ham Classifier</h3>
+          <p class="project-desc">High-accuracy email text classification using TF-IDF feature extraction and ensemble machine learning with comprehensive error analysis dashboard.</p>
+          <ul class="project-highlights">
+            <li><strong>92.3% accuracy</strong> with F1 score of 0.90</li>
+            <li>TF-IDF + Random Forest pipeline</li>
+            <li>Error analysis &amp; visualization dashboard</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>scikit-learn</span><span>NLP</span><span>TF-IDF</span><span>Pandas</span>
+          </div>
+        </div>
 
-        <!-- TV Analytics -->
-        <article class="project-card flip reveal-slide delay-200">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <div class="proj-media">
-                <img src="pictures/tv-analytics.jpg" alt="Television data analytics preview">
-              </div>
-              <div class="proj-body">
-                <h3>Television Data Analytics</h3>
-                <div class="stack">
-                  <span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Seaborn</span>
-                </div>
-              </div>
-            </div>
-            <div class="flip-back">
-              <div class="proj-body back">
-                <h3>Television Data Analytics</h3>
-                <ul class="bullets">
-                  <li>Features from 15K+ shows; 10+ visualizations for trend drivers.</li>
-                  <li>Predictive modeling for popularity (86% acc).</li>
-                  <li>Notebook → lightweight report pipeline for stakeholders.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
       </div>
     </div>
   </section>
 
-
-  <!-- (Optional) PHOTO section kept, still hidden in CSS -->
-  <section id="photos" class="section photo-hidden">
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
     <div class="container">
-      <h2>Photo Projects</h2>
-      <p>Photography content temporarily hidden while the site focuses on technical work.</p>
-    </div>
-  </section>
-
-  <!-- ========== CONTACT (centered, no form) ========== -->
-  <section id="contact" class="section contact--centered">
-    <div class="container">
-      <h2 class="reveal-up">Contact Me.</h2>
-      <p class="contact-sub reveal-fade delay-100">
-        Open to internships, research, or collaboration — let’s connect!
-      </p>
-
-      <ul class="contact-list reveal-slide delay-200">
-        <li><strong>Email:</strong> <a href="mailto:hiro_ai_7@berkeley.edu">hiro_ai_7@berkeley.edu</a></li>
-        <li><strong>Phone:</strong> <a href="tel:+19495579201">(949) 557-9201</a></li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">github.com/seven-ai-h</a></li>
-        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">linkedin.com/in/hiro-xiangyuan</a></li>
-      </ul>
-
-      <div class="contact-social reveal-fade delay-300">
-        <a class="btn-icon" href="mailto:hiro_ai_7@berkeley.edu" aria-label="Email">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </a>
-        <a class="btn-icon" href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M6.94 6.5A2.44 2.44 0 1 1 6.9 1.6a2.44 2.44 0 0 1 .04 4.9zM4.5 8.2h4.9V22H4.5zM13.3 8.2h4.7v1.9h.1c.7-1.3 2.3-2.7 4.7-2.7 5 0 5.9 3.3 5.9 7.7V22h-4.9v-6c0-1.5 0-3.5-2.1-3.5s-2.4 1.6-2.4 3.4V22h-4.9V8.2z"/></svg>
-        </a>
-        <a class="btn-icon" href="https://github.com/seven-ai-h" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24"><path d="M12 .5A12 12 0 0 0 0 12.6c0 5.3 3.4 9.7 8 11.3.6.1.8-.3.8-.6v-2.3c-3.3.7-4-1.4-4-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.7 1.2 3.4.9.1-.8.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.2 0 0 .9-.3 3 .1a10.2 10.2 0 0 1 5.5 0c2-.4 3-.1 3-.1.6 1.7.2 2.9.1 3.2.7.8 1.1 1.8 1.1 3 0 4.4-2.7 5.4-5.3 5.7.4.3.8 1 .8 2v3c0 .3.2.7.8.6a12 12 0 0 0 8-11.3A12 12 0 0 0 12 .5z"/></svg>
-        </a>
+      <div class="section-header reveal-up">
+        <span class="section-label">05 / Contact</span>
+        <h2 class="section-title">Let's Connect</h2>
+      </div>
+      <div class="contact-wrapper reveal-up">
+        <div class="contact-text glass-card">
+          <p class="contact-lead">
+            I'm actively looking for <strong>internship &amp; full-time opportunities</strong> in data engineering, software engineering, and ML. Let's build something great together.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:hiro_ai_7@berkeley.edu" class="contact-item">
+              <div class="contact-icon">&#9993;</div>
+              <div>
+                <span class="contact-label">Email</span>
+                <span class="contact-value">hiro_ai_7@berkeley.edu</span>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon ci-text">in</div>
+              <div>
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">hiro-xiangyuan</span>
+              </div>
+            </a>
+            <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <div>
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">seven-ai-h</span>
+              </div>
+            </a>
+            <a href="tel:9495579201" class="contact-item">
+              <div class="contact-icon">&#9742;</div>
+              <div>
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">(949) 557-9201</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-      <small>© <span id="year"></span> Tuoyu (Hiro) Xiangyuan — Data & CogSci</small>
+      <div class="footer-content">
+        <span class="footer-logo"><span class="logo-bracket">[</span>HX<span class="logo-bracket">]</span></span>
+        <p class="footer-copy">Designed &amp; built by Hiro Xiangyuan &middot; <span id="footerYear"></span></p>
+        <div class="footer-links">
+          <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js?v=5"></script>
+  <!-- Back to Top -->
+  <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
