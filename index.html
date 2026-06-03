@@ -46,8 +46,9 @@
   <section class="hero" id="hero">
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-content">
-      <div class="hero-avatar reveal-up">
+      <div class="hero-avatar reveal-up" id="avatarBtn" role="button" tabindex="0" aria-label="View photos">
         <img src="pictures/portrait.jpg" alt="Hiro Aihara" />
+        <div class="avatar-hint">&#128247; View photos</div>
       </div>
       <h1 class="hero-name reveal-up">
         <span class="name-line">Hiro</span>
@@ -99,25 +100,7 @@
             When I'm not coding, you'll find me exploring new frameworks, contributing to research at the Whitney Laboratory, or diving deep into distributed systems.
           </p>
         </div>
-        <div class="about-highlights reveal-up" style="--delay: 0.1s">
-          <div class="highlight-item">
-            <span class="highlight-num">5</span>
-            <span class="highlight-label">Internships</span>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-num">500K+</span>
-            <span class="highlight-label">Records Processed</span>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-num">95%</span>
-            <span class="highlight-label">Data Quality</span>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-num">3</span>
-            <span class="highlight-label">Projects Shipped</span>
-          </div>
-        </div>
-        <div class="about-coursework reveal-up" style="--delay: 0.2s">
+        <div class="about-coursework reveal-up" style="--delay: 0.1s">
           <h4>Relevant Coursework</h4>
           <div class="course-tags">
             <span class="course-tag">Data Structures &amp; Algorithms</span>
@@ -486,6 +469,18 @@
 
   <!-- Back to Top -->
   <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+
+  <!-- Photo Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery">
+    <button class="lb-close" id="lbClose" aria-label="Close">&#10005;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+    <div class="lb-main">
+      <img class="lb-img" id="lbImg" src="" alt="" />
+    </div>
+    <div class="lb-thumbnails" id="lbThumbs"></div>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

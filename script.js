@@ -278,6 +278,93 @@ document.querySelectorAll('a, button, .project-card, .contact-item, .pill').forE
 });
 
 /* =============================================
+   PHOTO LIGHTBOX
+   ============================================= */
+const photos = [
+  { src: 'pictures/portrait.jpg',       alt: 'Hiro' },
+  { src: 'pictures/sakuraberk.jpg',     alt: 'Sakura at Berkeley' },
+  { src: 'pictures/jiufensunset1.JPG',  alt: 'Jiufen Sunset' },
+  { src: 'pictures/jiufen1.JPG',        alt: 'Jiufen' },
+  { src: 'pictures/shifen.jpg',         alt: 'Shifen' },
+  { src: 'pictures/ximending.JPG',      alt: 'Ximending' },
+  { src: 'pictures/taiwanstreet.jpg',   alt: 'Taiwan Street' },
+  { src: 'pictures/seattletower.JPG',   alt: 'Seattle Tower' },
+  { src: 'pictures/doggiesakura.JPG',   alt: 'Doggie & Sakura' },
+  { src: 'pictures/trainpic.jpg',       alt: 'Train' },
+];
+
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lbImg');
+const lbThumbs  = document.getElementById('lbThumbs');
+const lbCounter = document.getElementById('lbCounter');
+let currentIdx  = 0;
+
+function buildThumbs() {
+  photos.forEach((p, i) => {
+    const img = document.createElement('img');
+    img.src = p.src;
+    img.alt = p.alt;
+    img.className = 'lb-thumb';
+    img.addEventListener('click', () => goTo(i));
+    lbThumbs.appendChild(img);
+  });
+}
+
+function goTo(idx) {
+  currentIdx = (idx + photos.length) % photos.length;
+  lbImg.classList.add('switching');
+  setTimeout(() => {
+    lbImg.src = photos[currentIdx].src;
+    lbImg.alt = photos[currentIdx].alt;
+    lbImg.classList.remove('switching');
+  }, 180);
+  lbCounter.textContent = `${currentIdx + 1} / ${photos.length}`;
+  lbThumbs.querySelectorAll('.lb-thumb').forEach((t, i) => {
+    t.classList.toggle('active', i === currentIdx);
+  });
+  // scroll active thumb into view
+  const active = lbThumbs.querySelectorAll('.lb-thumb')[currentIdx];
+  active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+function openLightbox(startIdx = 0) {
+  if (!lbThumbs.children.length) buildThumbs();
+  goTo(startIdx);
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('avatarBtn').addEventListener('click', () => openLightbox(0));
+document.getElementById('avatarBtn').addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(0); }
+});
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => goTo(currentIdx - 1));
+document.getElementById('lbNext').addEventListener('click', () => goTo(currentIdx + 1));
+
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape')      closeLightbox();
+  if (e.key === 'ArrowLeft')   goTo(currentIdx - 1);
+  if (e.key === 'ArrowRight')  goTo(currentIdx + 1);
+});
+
+// Touch swipe support
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+lightbox.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) goTo(currentIdx + (dx < 0 ? 1 : -1));
+}, { passive: true });
+
+/* =============================================
    FOOTER YEAR
    ============================================= */
 document.getElementById('footerYear').textContent = new Date().getFullYear();
