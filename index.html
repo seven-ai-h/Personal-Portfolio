@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hiro Xiangyuan — Data Engineer & Software Developer</title>
+  <title>Hiro Aihara — Data Engineer & Software Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -25,9 +25,9 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="nav-actions">
@@ -46,13 +46,9 @@
   <section class="hero" id="hero">
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-content">
-      <div class="hero-tag reveal-up">
-        <span class="tag-dot"></span>
-        Open to opportunities
-      </div>
       <h1 class="hero-name reveal-up">
         <span class="name-line">Hiro</span>
-        <span class="name-line accent">Xiangyuan</span>
+        <span class="name-line accent">Aihara</span>
       </h1>
       <div class="hero-typewriter reveal-up">
         <span class="tw-static">I build </span>
@@ -109,10 +105,6 @@
               <span class="info-value">B.S. Data Science</span>
             </div>
             <div class="info-item">
-              <span class="info-label">Status</span>
-              <span class="info-value status-open">Open to Work</span>
-            </div>
-            <div class="info-item">
               <span class="info-label">Location</span>
               <span class="info-value">Berkeley, CA</span>
             </div>
@@ -157,68 +149,84 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section class="section skills" id="skills">
+  <!-- Projects Section -->
+  <section class="section projects" id="projects">
     <div class="container">
       <div class="section-header reveal-up">
-        <span class="section-label">02 / Skills</span>
-        <h2 class="section-title">Tech Stack</h2>
+        <span class="section-label">02 / Projects</span>
+        <h2 class="section-title">Things I've Built</h2>
       </div>
-      <div class="skills-grid">
-        <div class="skill-category glass-card reveal-up">
-          <div class="skill-cat-icon">&#9000;</div>
-          <h3>Languages</h3>
-          <div class="skill-pills">
-            <span class="pill">Python</span>
-            <span class="pill">SQL</span>
-            <span class="pill">Java</span>
-            <span class="pill">JavaScript</span>
-            <span class="pill">TypeScript</span>
-            <span class="pill">HTML/CSS</span>
+      <div class="projects-grid">
+
+        <!-- TrendFlow -->
+        <div class="project-card glass-card reveal-up" data-tilt>
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon">&#128200;</div>
+            <div class="project-links">
+              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-name">TrendFlow</h3>
+          <p class="project-desc">Real-time trend detection system processing <strong>10,000+ social media posts/hour</strong> from Reddit, Twitter, and NewsAPI. Predicts viral trends <strong>24-48 hours</strong> before they peak.</p>
+          <ul class="project-highlights">
+            <li>DB performance: 8s &rarr; <strong>&lt;1s</strong> via normalized schema &amp; indexing</li>
+            <li><strong>99.5% uptime</strong> with automated failover &amp; monitoring</li>
+            <li>AWS Lambda + EventBridge event-driven architecture</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>PostgreSQL</span><span>Apache Airflow</span><span>NLP</span><span>Streamlit</span><span>AWS</span>
           </div>
         </div>
-        <div class="skill-category glass-card reveal-up" style="--delay: 0.1s">
-          <div class="skill-cat-icon">&#9729;</div>
-          <h3>Cloud &amp; Data</h3>
-          <div class="skill-pills">
-            <span class="pill pill-cloud">AWS Lambda</span>
-            <span class="pill pill-cloud">AWS RDS</span>
-            <span class="pill pill-cloud">S3</span>
-            <span class="pill pill-cloud">EventBridge</span>
-            <span class="pill pill-cloud">CloudWatch</span>
-            <span class="pill pill-cloud">QuickSight</span>
-            <span class="pill pill-cloud">PostgreSQL</span>
-            <span class="pill pill-cloud">MongoDB</span>
-            <span class="pill pill-cloud">DynamoDB</span>
+
+        <!-- GlobalNews Translation -->
+        <div class="project-card glass-card reveal-up" data-tilt style="--delay: 0.15s">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon">&#127760;</div>
+            <div class="project-links">
+              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-name">GlobalNews Translation</h3>
+          <p class="project-desc">Multilingual seq2seq translation model for Japanese-Chinese-English achieving <strong>85% validation accuracy</strong> on 100,000+ sentence pairs.</p>
+          <ul class="project-highlights">
+            <li>Flask REST API with <strong>&lt;200ms</strong> translation latency</li>
+            <li>Dataset quality improved <strong>40%</strong> via systematic NLP filtering</li>
+            <li>3 language combinations: JP &#8596; ZH &#8596; EN</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>Flask</span><span>Seq2Seq</span><span>NLP</span><span>Pandas</span><span>JavaScript</span>
           </div>
         </div>
-        <div class="skill-category glass-card reveal-up" style="--delay: 0.2s">
-          <div class="skill-cat-icon">&#9881;</div>
-          <h3>Frameworks &amp; Tools</h3>
-          <div class="skill-pills">
-            <span class="pill pill-tool">Django</span>
-            <span class="pill pill-tool">Flask</span>
-            <span class="pill pill-tool">Apache Airflow</span>
-            <span class="pill pill-tool">Pandas</span>
-            <span class="pill pill-tool">NumPy</span>
-            <span class="pill pill-tool">scikit-learn</span>
-            <span class="pill pill-tool">REST APIs</span>
-            <span class="pill pill-tool">Git</span>
-            <span class="pill pill-tool">CI/CD</span>
+
+        <!-- Spam Classifier -->
+        <div class="project-card glass-card reveal-up" data-tilt style="--delay: 0.3s">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon">&#128140;</div>
+            <div class="project-links">
+              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-name">Spam/Ham Classifier</h3>
+          <p class="project-desc">High-accuracy email text classification using TF-IDF feature extraction and ensemble machine learning with comprehensive error analysis dashboard.</p>
+          <ul class="project-highlights">
+            <li><strong>92.3% accuracy</strong> with F1 score of 0.90</li>
+            <li>TF-IDF + Random Forest pipeline</li>
+            <li>Error analysis &amp; visualization dashboard</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span><span>scikit-learn</span><span>NLP</span><span>TF-IDF</span><span>Pandas</span>
           </div>
         </div>
-        <div class="skill-category glass-card reveal-up" style="--delay: 0.3s">
-          <div class="skill-cat-icon">&#129504;</div>
-          <h3>Specializations</h3>
-          <div class="skill-pills">
-            <span class="pill pill-spec">NLP</span>
-            <span class="pill pill-spec">ETL Pipelines</span>
-            <span class="pill pill-spec">Data Engineering</span>
-            <span class="pill pill-spec">ML Modeling</span>
-            <span class="pill pill-spec">Seq2Seq</span>
-            <span class="pill pill-spec">System Design</span>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -364,84 +372,68 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section class="section projects" id="projects">
+  <!-- Skills Section -->
+  <section class="section skills" id="skills">
     <div class="container">
       <div class="section-header reveal-up">
-        <span class="section-label">04 / Projects</span>
-        <h2 class="section-title">Things I've Built</h2>
+        <span class="section-label">04 / Skills</span>
+        <h2 class="section-title">Tech Stack</h2>
       </div>
-      <div class="projects-grid">
-
-        <!-- TrendFlow -->
-        <div class="project-card glass-card reveal-up" data-tilt>
-          <div class="project-glow"></div>
-          <div class="project-header">
-            <div class="project-icon">&#128200;</div>
-            <div class="project-links">
-              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-name">TrendFlow</h3>
-          <p class="project-desc">Real-time trend detection system processing <strong>10,000+ social media posts/hour</strong> from Reddit, Twitter, and NewsAPI. Predicts viral trends <strong>24-48 hours</strong> before they peak.</p>
-          <ul class="project-highlights">
-            <li>DB performance: 8s &rarr; <strong>&lt;1s</strong> via normalized schema &amp; indexing</li>
-            <li><strong>99.5% uptime</strong> with automated failover &amp; monitoring</li>
-            <li>AWS Lambda + EventBridge event-driven architecture</li>
-          </ul>
-          <div class="project-tech">
-            <span>Python</span><span>PostgreSQL</span><span>Apache Airflow</span><span>NLP</span><span>Streamlit</span><span>AWS</span>
+      <div class="skills-grid">
+        <div class="skill-category glass-card reveal-up">
+          <div class="skill-cat-icon">&#9000;</div>
+          <h3>Languages</h3>
+          <div class="skill-pills">
+            <span class="pill">Python</span>
+            <span class="pill">SQL</span>
+            <span class="pill">Java</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">HTML/CSS</span>
           </div>
         </div>
-
-        <!-- GlobalNews Translation -->
-        <div class="project-card glass-card reveal-up" data-tilt style="--delay: 0.15s">
-          <div class="project-glow"></div>
-          <div class="project-header">
-            <div class="project-icon">&#127760;</div>
-            <div class="project-links">
-              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-name">GlobalNews Translation</h3>
-          <p class="project-desc">Multilingual seq2seq translation model for Japanese-Chinese-English achieving <strong>85% validation accuracy</strong> on 100,000+ sentence pairs.</p>
-          <ul class="project-highlights">
-            <li>Flask REST API with <strong>&lt;200ms</strong> translation latency</li>
-            <li>Dataset quality improved <strong>40%</strong> via systematic NLP filtering</li>
-            <li>3 language combinations: JP &#8596; ZH &#8596; EN</li>
-          </ul>
-          <div class="project-tech">
-            <span>Python</span><span>Flask</span><span>Seq2Seq</span><span>NLP</span><span>Pandas</span><span>JavaScript</span>
+        <div class="skill-category glass-card reveal-up" style="--delay: 0.1s">
+          <div class="skill-cat-icon">&#9729;</div>
+          <h3>Cloud &amp; Data</h3>
+          <div class="skill-pills">
+            <span class="pill pill-cloud">AWS Lambda</span>
+            <span class="pill pill-cloud">AWS RDS</span>
+            <span class="pill pill-cloud">S3</span>
+            <span class="pill pill-cloud">EventBridge</span>
+            <span class="pill pill-cloud">CloudWatch</span>
+            <span class="pill pill-cloud">QuickSight</span>
+            <span class="pill pill-cloud">PostgreSQL</span>
+            <span class="pill pill-cloud">MongoDB</span>
+            <span class="pill pill-cloud">DynamoDB</span>
           </div>
         </div>
-
-        <!-- Spam Classifier -->
-        <div class="project-card glass-card reveal-up" data-tilt style="--delay: 0.3s">
-          <div class="project-glow"></div>
-          <div class="project-header">
-            <div class="project-icon">&#128140;</div>
-            <div class="project-links">
-              <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-name">Spam/Ham Classifier</h3>
-          <p class="project-desc">High-accuracy email text classification using TF-IDF feature extraction and ensemble machine learning with comprehensive error analysis dashboard.</p>
-          <ul class="project-highlights">
-            <li><strong>92.3% accuracy</strong> with F1 score of 0.90</li>
-            <li>TF-IDF + Random Forest pipeline</li>
-            <li>Error analysis &amp; visualization dashboard</li>
-          </ul>
-          <div class="project-tech">
-            <span>Python</span><span>scikit-learn</span><span>NLP</span><span>TF-IDF</span><span>Pandas</span>
+        <div class="skill-category glass-card reveal-up" style="--delay: 0.2s">
+          <div class="skill-cat-icon">&#9881;</div>
+          <h3>Frameworks &amp; Tools</h3>
+          <div class="skill-pills">
+            <span class="pill pill-tool">Django</span>
+            <span class="pill pill-tool">Flask</span>
+            <span class="pill pill-tool">Apache Airflow</span>
+            <span class="pill pill-tool">Pandas</span>
+            <span class="pill pill-tool">NumPy</span>
+            <span class="pill pill-tool">scikit-learn</span>
+            <span class="pill pill-tool">REST APIs</span>
+            <span class="pill pill-tool">Git</span>
+            <span class="pill pill-tool">CI/CD</span>
           </div>
         </div>
-
+        <div class="skill-category glass-card reveal-up" style="--delay: 0.3s">
+          <div class="skill-cat-icon">&#129504;</div>
+          <h3>Specializations</h3>
+          <div class="skill-pills">
+            <span class="pill pill-spec">NLP</span>
+            <span class="pill pill-spec">ETL Pipelines</span>
+            <span class="pill pill-spec">Data Engineering</span>
+            <span class="pill pill-spec">ML Modeling</span>
+            <span class="pill pill-spec">Seq2Seq</span>
+            <span class="pill pill-spec">System Design</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -500,7 +492,7 @@
     <div class="container">
       <div class="footer-content">
         <span class="footer-logo"><span class="logo-bracket">[</span>HX<span class="logo-bracket">]</span></span>
-        <p class="footer-copy">Designed &amp; built by Hiro Xiangyuan &middot; <span id="footerYear"></span></p>
+        <p class="footer-copy">Designed &amp; built by Hiro Aihara &middot; <span id="footerYear"></span></p>
         <div class="footer-links">
           <a href="https://github.com/seven-ai-h" target="_blank" rel="noopener">GitHub</a>
           <a href="https://linkedin.com/in/hiro-xiangyuan" target="_blank" rel="noopener">LinkedIn</a>
