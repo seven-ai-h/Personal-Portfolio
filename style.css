@@ -302,6 +302,69 @@ strong { color: var(--accent-bright); font-weight: 600; }
 }
 .hero-avatar:hover .avatar-hint { opacity: 1; }
 
+/* Playful "see my photography" call-out beside the avatar */
+.avatar-cta {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 46%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  color: var(--accent-bright);
+  animation: cta-bob 2.8s ease-in-out infinite;
+}
+.avatar-arrow {
+  width: 60px;
+  height: 46px;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transform: scaleX(-1);
+}
+.avatar-cta-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.25;
+}
+.cta-small {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+.cta-big {
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-avatar:hover .avatar-arrow { opacity: 1; }
+@keyframes cta-bob {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(5px); }
+}
+/* Stack the call-out under the avatar on narrow screens */
+@media (max-width: 780px) {
+  .avatar-cta {
+    position: static;
+    transform: none;
+    flex-direction: column-reverse;
+    gap: 2px;
+    margin: 0.75rem auto 0;
+    animation: cta-bob-v 2.8s ease-in-out infinite;
+  }
+  .avatar-cta-text { text-align: center; }
+  .avatar-arrow { transform: rotate(-90deg) scaleX(-1); width: 40px; height: 32px; }
+  @keyframes cta-bob-v {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+}
+
 /* =============================================
    LIGHTBOX
    ============================================= */
