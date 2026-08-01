@@ -195,7 +195,7 @@ class Particle {
 }
 
 function initParticles() {
-  const count = Math.min(Math.floor((canvas.width * canvas.height) / 8000), 120);
+  const count = Math.min(Math.floor((canvas.width * canvas.height) / 16000), 60);
   particles = Array.from({ length: count }, () => new Particle());
 }
 
@@ -305,6 +305,8 @@ let currentIdx  = 0;
 function buildThumbs() {
   photos.forEach((p, i) => {
     const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.decoding = 'async';
     img.src = p.src;
     img.alt = p.alt;
     img.className = 'lb-thumb';
@@ -331,16 +333,23 @@ function goTo(idx) {
   active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
 
+let heroPaused = false;
+
 function openLightbox(startIdx = 0) {
   if (!lbThumbs.children.length) buildThumbs();
   goTo(startIdx);
   lightbox.classList.add('open');
+  document.body.classList.add('lb-open');
   document.body.style.overflow = 'hidden';
+  heroPaused = true;               // stop the particle canvas while overlaid
+  if (typeof animFrame !== 'undefined') cancelAnimationFrame(animFrame);
 }
 
 function closeLightbox() {
   lightbox.classList.remove('open');
+  document.body.classList.remove('lb-open');
   document.body.style.overflow = '';
+  if (heroPaused) { heroPaused = false; animateCanvas(); }  // resume
 }
 
 document.getElementById('avatarBtn').addEventListener('click', () => openLightbox(0));
@@ -390,6 +399,7 @@ if (floaters.length && window.matchMedia('(min-width: 1001px)').matches) {
   }, { passive: true });
 
   (function parallaxLoop() {
+    if (heroPaused) { requestAnimationFrame(parallaxLoop); return; }
     curX += (fx - curX) * 0.06;
     curY += (fy - curY) * 0.06;
     floaters.forEach(f => {

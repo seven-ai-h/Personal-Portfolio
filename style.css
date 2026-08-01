@@ -358,6 +358,9 @@ strong { color: var(--accent-bright); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   .floater-inner { animation: none !important; }
 }
+/* Freeze hero motion while the lightbox is open (perf) */
+body.lb-open .floater-inner { animation-play-state: paused; }
+body.lb-open .hero-canvas { visibility: hidden; }
 
 /* Hero Avatar */
 .hero-avatar {
@@ -469,9 +472,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
   position: fixed;
   inset: 0;
   z-index: 500;
-  background: rgba(0, 0, 0, 0.93);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(2, 6, 16, 0.985);
   display: flex;
   flex-direction: column;
   align-items: center;
