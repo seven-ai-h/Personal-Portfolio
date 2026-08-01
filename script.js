@@ -280,17 +280,14 @@ document.querySelectorAll('a, button, .project-card, .contact-item, .pill').forE
 /* =============================================
    PHOTO LIGHTBOX
    ============================================= */
+// ⬇️ Swap these 5 filenames for whichever photos you want to feature.
+//    Files live in the pictures/ folder. First one shows in the hero circle.
 const photos = [
   { src: 'pictures/portrait.jpg',       alt: 'Hiro' },
   { src: 'pictures/sakuraberk.jpg',     alt: 'Sakura at Berkeley' },
   { src: 'pictures/jiufensunset1.JPG',  alt: 'Jiufen Sunset' },
-  { src: 'pictures/jiufen1.JPG',        alt: 'Jiufen' },
+  { src: 'pictures/seattletower.JPG',   alt: 'Seattle' },
   { src: 'pictures/shifen.jpg',         alt: 'Shifen' },
-  { src: 'pictures/ximending.JPG',      alt: 'Ximending' },
-  { src: 'pictures/taiwanstreet.jpg',   alt: 'Taiwan Street' },
-  { src: 'pictures/seattletower.JPG',   alt: 'Seattle Tower' },
-  { src: 'pictures/doggiesakura.JPG',   alt: 'Doggie & Sakura' },
-  { src: 'pictures/trainpic.jpg',       alt: 'Train' },
 ];
 
 const lightbox  = document.getElementById('lightbox');
