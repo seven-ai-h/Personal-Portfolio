@@ -676,7 +676,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
    SHARED SECTION STYLES
    ============================================= */
 .section {
-  padding: 7rem 0;
+  padding: 4.25rem 0;
 }
 .container {
   max-width: 1200px;
@@ -684,7 +684,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
   padding: 0 2rem;
 }
 .section-header {
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 .section-label {
   display: block;
@@ -727,7 +727,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
   max-width: 780px;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 .about-text p {
@@ -791,7 +791,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
 }
 
 .skill-category {
-  padding: 2rem;
+  padding: 1.5rem;
   transition: transform var(--transition);
 }
 .skill-category:hover { transform: translateY(-4px); }
@@ -854,7 +854,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
 .timeline-item {
   display: flex;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1.1rem;
   position: relative;
 }
 
@@ -883,7 +883,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
 }
 
 .timeline-card {
-  padding: 1.75rem;
+  padding: 1.4rem 1.5rem;
   flex: 1;
 }
 
@@ -934,7 +934,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
 }
 
 .tc-bullets {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.9rem;
 }
 .tc-bullets li {
   font-size: 0.875rem;
@@ -978,7 +978,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
 }
 
 .project-card {
-  padding: 2rem;
+  padding: 1.5rem;
   position: relative;
   overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition);
@@ -1081,13 +1081,13 @@ strong { color: var(--accent-bright); font-weight: 600; }
 .contact-wrapper { max-width: 700px; }
 
 .contact-text {
-  padding: 3rem;
+  padding: 2.25rem;
 }
 .contact-lead {
   font-size: 1.05rem;
   color: var(--text-muted);
-  margin-bottom: 2.5rem;
-  line-height: 1.8;
+  margin-bottom: 1.75rem;
+  line-height: 1.75;
 }
 
 .contact-links {
@@ -1267,7 +1267,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
 }
 
 @media (max-width: 600px) {
-  .section { padding: 4rem 0; }
+  .section { padding: 3rem 0; }
   .hero-cta { flex-direction: column; align-items: center; }
   .about-coursework { padding: 1.25rem; }
   .contact-text { padding: 2rem 1.5rem; }
