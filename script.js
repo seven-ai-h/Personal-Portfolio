@@ -285,13 +285,13 @@ document.querySelectorAll('a, button, .project-card, .contact-item, .pill').forE
 const photos = [
   { src: 'pictures/portrait.jpg',       alt: 'Hiro' },
   { src: 'pictures/sakuraberk.jpg',     alt: 'Sakura at Berkeley' },
-  { src: 'pictures/jiufensunset1.JPG',  alt: 'Jiufen Sunset' },
-  { src: 'pictures/seattletower.JPG',   alt: 'Seattle' },
+  { src: 'pictures/jiufensunset1.jpg',  alt: 'Jiufen Sunset' },
+  { src: 'pictures/seattletower.jpg',   alt: 'Seattle' },
   { src: 'pictures/taiwanstreet.jpg',   alt: 'Taiwan Street' },
   { src: 'pictures/jiufennosunset.jpg',           alt: 'Photography' },
-  { src: 'pictures/ximending.JPG',           alt: 'Photography' },
-  { src: 'pictures/doggiesakura.JPG',           alt: 'Photography' },
-  { src: 'pictures/jiufen1.JPG',           alt: 'Photography' },
+  { src: 'pictures/ximending.jpg',           alt: 'Photography' },
+  { src: 'pictures/doggiesakura.jpg',           alt: 'Photography' },
+  { src: 'pictures/jiufen1.jpg',           alt: 'Photography' },
   { src: 'pictures/trainpic.jpg',           alt: 'Photography' },
   { src: 'pictures/shifen.jpg',         alt: 'Shifen' },
 ];
