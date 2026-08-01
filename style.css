@@ -852,6 +852,8 @@ strong { color: var(--accent-bright); font-weight: 600; }
   transform: translateX(6px);
 }
 .exp-logo {
+  position: relative;
+  overflow: hidden;
   width: 48px;
   height: 48px;
   flex-shrink: 0;
@@ -865,7 +867,17 @@ strong { color: var(--accent-bright); font-weight: 600; }
   background: linear-gradient(135deg, var(--logo-c, var(--accent)), color-mix(in srgb, var(--logo-c, var(--accent)) 55%, #000));
   box-shadow: 0 4px 14px color-mix(in srgb, var(--logo-c, var(--accent)) 35%, transparent);
 }
-.exp-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+/* Real logo image (when present) covers the monogram on a clean white tile */
+.exp-logo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 12px;
+  padding: 4px;
+}
 .exp-info { flex: 1; min-width: 0; }
 .exp-company {
   font-size: 1.05rem;
