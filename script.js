@@ -288,6 +288,12 @@ const photos = [
   { src: 'pictures/jiufensunset1.JPG',  alt: 'Jiufen Sunset' },
   { src: 'pictures/seattletower.JPG',   alt: 'Seattle' },
   { src: 'pictures/taiwanstreet.jpg',   alt: 'Taiwan Street' },
+  { src: 'pictures/new1.jpg',           alt: 'Photography' },
+  { src: 'pictures/new2.jpg',           alt: 'Photography' },
+  { src: 'pictures/new3.jpg',           alt: 'Photography' },
+  { src: 'pictures/new4.jpg',           alt: 'Photography' },
+  { src: 'pictures/new5.jpg',           alt: 'Photography' },
+  { src: 'pictures/shifen.jpg',         alt: 'Shifen' },
 ];
 
 const lightbox  = document.getElementById('lightbox');
@@ -303,6 +309,7 @@ function buildThumbs() {
     img.alt = p.alt;
     img.className = 'lb-thumb';
     img.addEventListener('click', () => goTo(i));
+    img.addEventListener('error', () => { img.style.display = 'none'; });
     lbThumbs.appendChild(img);
   });
 }
@@ -365,6 +372,16 @@ lightbox.addEventListener('touchend', e => {
    HERO FLOATER PARALLAX
    ============================================= */
 const floaters = document.querySelectorAll('.floater');
+
+// Click a floating photo -> zoom into the gallery lightbox at that image
+floaters.forEach(f => {
+  f.addEventListener('click', () => {
+    const src = f.querySelector('img')?.getAttribute('src');
+    const idx = photos.findIndex(p => p.src === src);
+    openLightbox(idx >= 0 ? idx : 0);
+  });
+});
+
 if (floaters.length && window.matchMedia('(min-width: 1001px)').matches) {
   let fx = 0, fy = 0, curX = 0, curY = 0;
   document.addEventListener('mousemove', e => {
