@@ -287,7 +287,7 @@ const photos = [
   { src: 'pictures/sakuraberk.jpg',     alt: 'Sakura at Berkeley' },
   { src: 'pictures/jiufensunset1.JPG',  alt: 'Jiufen Sunset' },
   { src: 'pictures/seattletower.JPG',   alt: 'Seattle' },
-  { src: 'pictures/shifen.jpg',         alt: 'Shifen' },
+  { src: 'pictures/taiwanstreet.jpg',   alt: 'Taiwan Street' },
 ];
 
 const lightbox  = document.getElementById('lightbox');
