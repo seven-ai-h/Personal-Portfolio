@@ -362,6 +362,28 @@ lightbox.addEventListener('touchend', e => {
 }, { passive: true });
 
 /* =============================================
+   HERO FLOATER PARALLAX
+   ============================================= */
+const floaters = document.querySelectorAll('.floater');
+if (floaters.length && window.matchMedia('(min-width: 1001px)').matches) {
+  let fx = 0, fy = 0, curX = 0, curY = 0;
+  document.addEventListener('mousemove', e => {
+    fx = (e.clientX / window.innerWidth - 0.5) * 2;
+    fy = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  (function parallaxLoop() {
+    curX += (fx - curX) * 0.06;
+    curY += (fy - curY) * 0.06;
+    floaters.forEach(f => {
+      const d = parseFloat(f.dataset.depth) || 20;
+      f.style.transform = `translate(${curX * d}px, ${curY * d}px)`;
+    });
+    requestAnimationFrame(parallaxLoop);
+  })();
+}
+
+/* =============================================
    FOOTER YEAR
    ============================================= */
 document.getElementById('footerYear').textContent = new Date().getFullYear();
