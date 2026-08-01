@@ -235,7 +235,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: var(--nav-h) 2rem 4rem;
+  padding: var(--nav-h) 2rem 7rem;
 }
 
 .hero-canvas {
@@ -552,7 +552,7 @@ strong { color: var(--accent-bright); font-weight: 600; }
 
 .hero-scroll-hint {
   position: absolute;
-  bottom: 0.85rem;
+  bottom: 1.75rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
