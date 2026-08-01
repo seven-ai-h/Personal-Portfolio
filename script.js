@@ -288,11 +288,11 @@ const photos = [
   { src: 'pictures/jiufensunset1.JPG',  alt: 'Jiufen Sunset' },
   { src: 'pictures/seattletower.JPG',   alt: 'Seattle' },
   { src: 'pictures/taiwanstreet.jpg',   alt: 'Taiwan Street' },
-  { src: 'pictures/new1.jpg',           alt: 'Photography' },
-  { src: 'pictures/new2.jpg',           alt: 'Photography' },
-  { src: 'pictures/new3.jpg',           alt: 'Photography' },
-  { src: 'pictures/new4.jpg',           alt: 'Photography' },
-  { src: 'pictures/new5.jpg',           alt: 'Photography' },
+  { src: 'pictures/jiufennosunset.jpg',           alt: 'Photography' },
+  { src: 'pictures/ximending.JPG',           alt: 'Photography' },
+  { src: 'pictures/doggiesakura.JPG',           alt: 'Photography' },
+  { src: 'pictures/jiufen1.JPG',           alt: 'Photography' },
+  { src: 'pictures/trainpic.jpg',           alt: 'Photography' },
   { src: 'pictures/shifen.jpg',         alt: 'Shifen' },
 ];
 
