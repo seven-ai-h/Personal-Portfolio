@@ -1132,6 +1132,12 @@ body.lb-open .hero-canvas { visibility: hidden; }
   border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
+.tc-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 0.9rem;
+}
 .tc-bullets {
   margin-bottom: 0.9rem;
 }
